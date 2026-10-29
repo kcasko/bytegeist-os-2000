@@ -4,13 +4,13 @@
 .rogue-shortcut { position: absolute; top: 20px; left: 110px; width: 92px; display: grid; justify-items: center; gap: 6px; padding: 5px; color: #fff0cc; background: transparent; border: 1px dotted #cbaa66; box-shadow: none; text-shadow: 1px 1px #000; z-index: 1; }
 .rogue-shortcut strong { font: bold 25px Georgia; background: #9b3027; color: white; border: 2px outset #e1af84; padding: 0 9px; }
 .rogue-shortcut small { font-size: 9px; line-height: 1.5; }
-.infection-effects { position: absolute; top: 14px; right: 15px; bottom: 14px; width: 310px; max-width: calc(100% - 30px); z-index: 2000; pointer-events: none; overflow-y: auto; padding: 3px 3px 3px 16px; }
+.infection-effects { position: absolute; top: 14px; right: 15px; bottom: 14px; width: 310px; max-width: calc(100% - 30px); z-index: 2000; pointer-events: none; overflow: visible; padding: 3px 3px 3px 16px; }
 .infection-effects-tools { display: flex; justify-content: space-between; align-items: center; gap: 6px; background: #e2d9c1; padding: 5px; border: 1px solid #8a806c; pointer-events: auto; }
 .infection-effects-tools small { font: 8px 'Courier New', monospace; }
 .infection-effects-tools button { font-size: 9px; padding: 3px 5px; }
 .infection-popup { margin: 10px 0; background: #d4d0c8; border: 2px solid; border-color: #fff #37322d #37322d #fff; box-shadow: 3px 3px #0007; pointer-events: auto; }
 .infection-popup-1 { margin-left: -12px; margin-right: 10px; }
-.infection-popup-2 { margin-left: -5px; margin-right: 4px; }
+.infection-popup-2 { position: fixed; top: 18px; left: 15px; width: 290px; margin: 0; }
 .infection-popup header { display: flex; gap: 6px; align-items: center; justify-content: space-between; color: white; background: #752c2c; padding: 3px 4px 3px 6px; font-size: 11px; }
 .infection-popup-1 header { background: #183d69; }
 .infection-popup-2 header { background: #735019; }
@@ -40,3 +40,5 @@
 @media (max-width: 640px) { .system-tray:has(.infection-tray-button) time { display: none; } .infection-tray-button { min-height: 26px; } }
 .task-process-actions { position: sticky; bottom: 0; padding: 9px; margin: 12px -9px; background: #d4d0c8; border: 1px outset #eee; box-shadow: 0 -2px #f7f7ef; z-index: 1; }
 .infection-popup footer.investigation-confirmed { background: #dcebd5; border-top: 2px solid #426d31; } .infection-popup .investigation-confirmed small { color: #27451d; font-weight: bold; }
+@media (max-height: 719px) { .desktop.simulation-active.infected { height: calc(100dvh - 132px); } .rogue-shortcut { display: none; } }
+@media (max-height: 719px) { .simulation-active.infected .calendar-popup { bottom: 132px; } }

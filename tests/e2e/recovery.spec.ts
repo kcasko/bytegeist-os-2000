@@ -191,3 +191,19 @@ test('popup investigation reveals and focuses process details even when Task Man
   await expect(details).toBeFocused()
   await expect(tasks).toHaveCount(1)
 })
+
+test('third warning sits on the left without adding a popup scrollbar', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.clock.install()
+  await infect(page)
+  await page.clock.runFor(8000)
+  const warnings = page.getByRole('complementary', { name: 'Fictional malware warning' })
+  const first = (await warnings.getByRole('dialog', { name: 'ByteGuard 2000 warning', exact: true }).boundingBox())!
+  const helper = warnings.getByRole('dialog', { name: 'ByteWire Helper warning', exact: true })
+  await expect(helper).toBeInViewport()
+  const box = (await helper.boundingBox())!
+  expect(box.x + box.width).toBeLessThan(first.x)
+  expect(box.y).toBeLessThan(first.y + first.height)
+  expect(await warnings.evaluate(el => getComputedStyle(el).overflowY)).toBe('visible')
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth && document.documentElement.scrollHeight <= innerHeight)).toBe(true)
+})
