@@ -1,6 +1,6 @@
-# Interactive fun fact: WebTV Memories
+# Discover my first internet: WebTV Memories
 
-Visible entry: Welcome's Interactive fun fact button, a WebTV Memories desktop shortcut, and the Start entry. The core About/Skills/Projects shortcuts remain direct; this feature never gates navigation or starts ByteWire's malware simulation.
+Visible entry: Welcome's Discover my first internet button, a WebTV Memories desktop shortcut, and the Start entry. The core About/Skills/Projects shortcuts remain direct; this feature never gates navigation or starts ByteWire's malware simulation.
 
 Visitors choose Connect on a TV-shaped screen. An original WebTV-inspired four-second connection sequence introduces a homemade-page recreation. Skip connection is available; reduced-motion preference goes directly online. Opening the homepage reveals Keith's fun fact: his first HTML websites were built using WebTV on a television.
 

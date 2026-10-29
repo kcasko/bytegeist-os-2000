@@ -100,6 +100,9 @@ legend { color: #264c72; }
 .simulation-active .start-menu { bottom: 88px; max-height: calc(100dvh - 88px); }
 .portfolio-shortcuts { display: flex; flex-wrap: wrap; gap: 6px; padding: 7px 12px; border-bottom: 1px solid #aeb7bd; background: #dce2e5; }
 .portfolio-shortcuts button { min-height: 28px; font-size: 11px; }
+.portfolio-shortcuts { align-items: center; }
+.fun-fact-shortcut { display: grid; gap: 3px; }
+.fun-fact-shortcut small { font-size: 10px; color: #344957; }
 .desktop:focus { outline: none; }
 .desktop.background-blue { background-color: #163c60; }
 .desktop.background-teal { background-color: #086465; }

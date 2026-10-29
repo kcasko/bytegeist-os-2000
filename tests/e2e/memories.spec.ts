@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright'
 
 test('interactive fun fact connects through a TV loading screen and reveals Keith’s story', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('button', { name: 'Interactive fun fact', exact: true }).click()
+  await page.getByRole('button', { name: 'Discover my first internet', exact: true }).click()
   const memories = page.getByRole('dialog', { name: 'WebTV Memories', exact: true })
   await memories.getByRole('button', { name: 'Connect', exact: true }).click()
   await expect(memories.getByRole('progressbar', { name: 'WebTV connection progress' })).toBeVisible()
@@ -27,7 +27,7 @@ test('reduced motion skips the connection animation and the memory works on mobi
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/')
-  await page.getByRole('button', { name: 'Interactive fun fact', exact: true }).click()
+  await page.getByRole('button', { name: 'Discover my first internet', exact: true }).click()
   const memories = page.getByRole('dialog', { name: 'WebTV Memories', exact: true })
   await memories.getByRole('button', { name: 'Connect', exact: true }).click()
   await expect(memories.getByRole('button', { name: 'Open my first homepage', exact: true })).toBeVisible()
@@ -41,7 +41,7 @@ test('reduced motion skips the connection animation and the memory works on mobi
 test('TV connection finishes naturally and powering off cancels a pending connection', async ({ page }) => {
   await page.clock.install()
   await page.goto('/')
-  await page.getByRole('button', { name: 'Interactive fun fact', exact: true }).click()
+  await page.getByRole('button', { name: 'Discover my first internet', exact: true }).click()
   const memories = page.getByRole('dialog', { name: 'WebTV Memories', exact: true })
   await memories.getByRole('button', { name: 'Connect', exact: true }).click()
   await page.clock.runFor(4000)
