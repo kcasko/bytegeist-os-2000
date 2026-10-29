@@ -98,3 +98,5 @@ legend { color: #264c72; }
 .portfolio-links { display: flex; flex-wrap: wrap; gap: 14px; line-height: 1.8; }
 .credential-links { padding-left: 18px; line-height: 2.3; }
 .simulation-active .start-menu { bottom: 88px; max-height: calc(100dvh - 88px); }
+.portfolio-shortcuts { display: flex; flex-wrap: wrap; gap: 6px; padding: 7px 12px; border-bottom: 1px solid #aeb7bd; background: #dce2e5; }
+.portfolio-shortcuts button { min-height: 28px; font-size: 11px; }

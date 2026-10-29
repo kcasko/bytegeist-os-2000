@@ -43,7 +43,7 @@ npx playwright install chromium firefox webkit
 npm run test:e2e
 ```
 
-`check` runs lint, strict application TypeScript checking, 24 unit/component tests and production build. The browser suite defines 26 scenarios across Chromium, Firefox and WebKit: 77 passed, one unsupported Firefox mobile-emulation test skipped. Automated accessibility samples cover desktop, Start, skills, client, infection and recovery report. Touch emulation and reduced motion are exercised. Physical devices and screen-reader sessions remain manual checks.
+`check` runs lint, strict application TypeScript checking, 25 unit/component tests and production build. The browser suite defines 26 scenarios across Chromium, Firefox and WebKit: 77 passed, one unsupported Firefox mobile-emulation test skipped. Automated accessibility samples cover desktop, Start, skills, client, infection and recovery report. Touch emulation and reduced motion are exercised. Physical devices and screen-reader sessions remain manual checks.
 
 To test the production bundle:
 
@@ -76,6 +76,6 @@ The full 77-check cross-browser suite passed against the local production previe
 
 ## Release status
 
-Local only. No GitHub remote, public deployment, AWS resources or submission have been created. Both casko.dev and bytespace.casko.dev remain untouched. amplify.yml selects Node 22 and static dist output. Public deployment and submission require Keith's confirmation. See docs/RELEASE_CHECKLIST.md and docs/SUBMISSION_DRAFT.md.
+Local only. No GitHub remote, public deployment, AWS resources or submission have been created. Both casko.dev and bytespace.casko.dev remain untouched. amplify.yml selects Node 22 and static dist output. Public deployment and submission require Keith's confirmation. See docs/CHALLENGE_FIT.md, docs/RELEASE_CHECKLIST.md and docs/SUBMISSION_DRAFT.md.
 
 Optional sound, preference/progress storage, a terminal and window resize handles are deferred. The P0 portfolio and one complete incident scenario work locally.

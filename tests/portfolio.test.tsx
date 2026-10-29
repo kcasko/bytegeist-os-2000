@@ -17,3 +17,15 @@ it('makes education, credentials and contact directly available', async () => {
   expect(screen.getByRole('link', { name: /AWS Certified Cloud Practitioner/ })).toHaveAttribute('href', expect.stringContaining('credly.com'))
   expect(screen.getByRole('link', { name: /Google IT Support/ })).toBeVisible()
 })
+
+it('labels all required sections and the optional creative feature on Welcome', async () => {
+  const user = userEvent.setup()
+  render(<App />)
+  const welcome = screen.getByRole('dialog', { name: 'Welcome', exact: true })
+  const sections = within(welcome).getByRole('navigation', { name: 'Portfolio sections' })
+  expect(within(sections).getByRole('button', { name: 'About Me', exact: true })).toBeVisible()
+  expect(within(sections).getByRole('button', { name: 'Projects', exact: true })).toBeVisible()
+  expect(within(welcome).getByText(/optional malware recovery game/)).toBeVisible()
+  await user.click(within(sections).getByRole('button', { name: 'Skills', exact: true }))
+  expect(screen.getByRole('dialog', { name: 'System Properties', exact: true })).toBeVisible()
+})
