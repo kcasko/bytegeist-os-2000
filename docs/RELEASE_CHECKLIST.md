@@ -1,6 +1,6 @@
 # Release checklist: 0.1.0 local candidate
 
-No public deployment or submission has been authorized. The application is a static React build with no backend, analytics, tracking, persistent browser storage, real downloads, or executable execution.
+Keith authorized public GitHub publication and a separate Amplify deployment on October 29, 2026. Contest submission is not authorized. The application is a static React build with no backend, analytics, tracking, persistent browser storage, real downloads, or executable execution.
 
 ## Verified sources, October 29, 2026
 
@@ -22,15 +22,17 @@ No public deployment or submission has been authorized. The application is a sta
 
 ## Approval and external evidence still required
 
-- [ ] Confirm repository publication/visibility and GitHub URL. No remote has been created.
-- [ ] Confirm public deployment to a NEW Amplify app, using the default Amplify URL initially. Do not alter casko.dev or bytespace.casko.dev or their DNS.
-- [ ] Verify connected AWS account, region, build settings and any costs before publishing.
-- [ ] Push/review the candidate, run remote CI, and connect the approved release branch to the new Amplify app.
-- [ ] Validate live HTTPS URL, navigation, both game routes, mobile layout and outbound links.
-- [ ] Capture real Amplify successful deployment/build evidence. Local screenshots are not AWS evidence.
+- [x] Public repository created: https://github.com/kcasko/bytegeist-os-2000; main branch published; source link added to the site.
+- [x] Separate Amplify app created in us-east-1: d17okimdsll7tw, main branch, default domain only. Existing sites and DNS were not altered.
+- [x] Existing authenticated AWS account verified; static WEB hosting in us-east-1; no backend or custom-domain purchase. Hosting storage/traffic follows AWS pricing. Build ran locally before manual upload.
+- [x] Source published from release/0.1.0 to GitHub main; GitHub Actions passed. Amplify uses a manual verified static upload, not automatic repository deployment. Remote CI/live test results are in LIVE_DEPLOYMENT.md.
+- [x] Live HTTPS HTML and assets verified; complete browser suite passed against the live URL, covering navigation, game routes and mobile layouts. Outbound link reachability is recorded in LINK_AUDIT.md.
+- [x] Save real Amplify job 2 deployment evidence/log and a live-site screenshot. Build ran locally; no Amplify build is claimed.
+- [ ] Capture an authenticated Amplify console screenshot for the submission.
 - [ ] Confirm Builder Center student verification and eligibility, add URLs and AWS evidence to submission draft.
 - [ ] Keith approves final submission, then submit and record confirmation.
 
 ## Manual verification limits
 
 No physical touch device or screen-reader session has been tested. Automation is not a complete accessibility certification. The game is one deterministic scenario. Optional sound, localStorage preferences/progress, terminal are deferred; they are not needed for the P0 experience.
+

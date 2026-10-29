@@ -1,6 +1,6 @@
 # Final local release: ByteGeist OS 2000 RC7
 
-October 29, 2026. Local release candidate only. Nothing has been published, deployed or submitted.
+Historical local candidate record, October 29, 2026. Subsequent publication and live verification are documented in LIVE_DEPLOYMENT.md. The contest entry remains unsubmitted.
 
 ## Completed
 
@@ -38,3 +38,4 @@ To run the source, install Node.js 22.12 or newer, extract the source, run npm c
 Keep casko.dev, bytespace.casko.dev, their repositories, AWS apps and DNS untouched. GitHub publication, Amplify hosting, remote CI and contest submission are not claimed complete. The latest source is on local branch release/0.1.0.
 
 Final complete browser run: **163 passed, 2 skipped, 0 failed**, across Chromium, Firefox and WebKit in 4.8 minutes. Both skips are Firefox's unsupported touch/mobile emulation. All 37 unit/component tests, lint, strict types and build passed. Full screenshot walkthrough also completed the connection/reveal and infection/recovery flows.
+

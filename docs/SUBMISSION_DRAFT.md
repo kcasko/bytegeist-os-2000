@@ -1,6 +1,6 @@
 # ByteGeist OS 2000
 
-Submission draft only. Not submitted. Add the approved repository URL, live AWS URL, AWS screenshots and deployment lessons after publication.
+Submission draft only. Not submitted. Live: https://main.d17okimdsll7tw.amplifyapp.com/ · Source: https://github.com/kcasko/bytegeist-os-2000. Confirm account eligibility, review AWS evidence and approve the final entry before submission.
 
 ## My first internet, rebuilt as a portfolio
 
@@ -34,8 +34,8 @@ The hardest problems were keeping windows usable after viewport changes, preserv
 
 Local verification covers Chromium, Firefox and WebKit, mobile widths, touch emulation, reduced motion, sampled accessibility checks, and prevention/reinfection/recovery. Physical-device and screen-reader sessions remain pending.
 
-## AWS evidence to add after deployment
+## AWS implementation and deployment lessons
 
-Planned service: AWS Amplify Hosting for the static dist build, with source on GitHub. amplify.yml selects Node 22, installs the lockfile, builds and publishes dist. No AWS resource or public repository has been created for this project yet.
+AWS Amplify Hosting serves the verified static dist build from a separate WEB app in us-east-1, with the source on GitHub. I used a manual upload deployment, rather than granting repository integration permissions. amplify.yml remains available for a future connected build; this release was built locally with Node 22, npm ci and npm run build. Automatic deploy-on-push is not configured.
 
-Before submission, add the actual live URL, repository URL, AWS app/build/deployment screenshots, desktop/mobile screenshots and lessons from the real deployment. Deploy this portfolio independently; casko.dev and bytespace.casko.dev remain untouched.
+The first upload exposed a Windows packaging issue: the ZIP used backslashes inside asset paths. Amplify reported success, but live browser tests found404 responses for JavaScript and CSS. I added a packaging script that explicitly uses forward slashes, redeployed, and verified the asset content types before testing the public site. This reinforced why a green deployment status alone is not enough. No existing portfolio or DNS configuration was changed. Before submission, include the saved deployment record and live screenshots, and capture the Amplify console view if the submission needs a setup screenshot.

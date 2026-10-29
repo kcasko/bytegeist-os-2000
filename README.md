@@ -78,7 +78,7 @@ The full 101-check cross-browser suite passed against the local production previ
 
 ## Release status
 
-Local only. No GitHub remote, public deployment, AWS resources or submission have been created. Both casko.dev and bytespace.casko.dev remain untouched. amplify.yml selects Node 22 and static dist output. Public deployment and submission require Keith's confirmation. See docs/CHALLENGE_FIT.md, docs/RELEASE_CHECKLIST.md and docs/SUBMISSION_DRAFT.md.
+Live portfolio: https://main.d17okimdsll7tw.amplifyapp.com/ · Public source: https://github.com/kcasko/bytegeist-os-2000. Hosted as a separate static Amplify app in us-east-1. This release uses manual ZIP deployment, so GitHub pushes run quality checks but do not automatically redeploy the site. Both casko.dev and bytespace.casko.dev remain untouched. No challenge submission has been sent. See docs/LIVE_DEPLOYMENT.md for release details and docs/SUBMISSION_DRAFT.md for the unsubmitted write-up.
 
 Optional sound, storage across page refreshes and a terminal are deferred. The P0 portfolio and one complete incident scenario work locally.
 
@@ -103,3 +103,7 @@ Windows remember preferred dimensions when the viewport temporarily shrinks. Sta
 ## Discover my first internet
 
 Choose Welcome → Discover my first internet → Connect, or open WebTV Memories from the desktop/Start. Power on a TV-style connection screen to discover that Keith built his first HTML websites on WebTV. Change the homemade page's colors and use the remote to explore Talk City, mIRC and his career change. This optional feature has Skip, power-off and normal window controls; it never blocks portfolio navigation. See docs/INTERACTIVE_FUN_FACT.md.
+
+## Package a manual Amplify upload on Windows
+
+After npm run build, run ./scripts/package-site.ps1 -OutputPath ./bytegeist-site.zip in PowerShell 7. The script writes portable forward-slash paths with index.html at the archive root and refuses to overwrite an existing archive. Windows Compress-Archive can create backslash entry names, which may deploy successfully while assets return404. Upload the portable ZIP to the existing ByteGeist Amplify app, then verify the live assets and interactions. See docs/LIVE_DEPLOYMENT.md.
