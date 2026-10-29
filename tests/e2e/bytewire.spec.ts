@@ -25,7 +25,7 @@ for (const width of [320, 390, 768, 1440]) {
     await expect(page.getByRole('button', { name: 'Exit Simulation', exact: true })).toBeInViewport()
     await page.getByRole('button', { name: 'Close ByteWire', exact: true }).click()
     await page.getByRole('button', { name: 'Start', exact: true }).click()
-    await page.getByRole('navigation', { name: 'Start menu' }).getByRole('button', { name: /ByteWire/ }).click()
+    await page.getByRole('navigation', { name: 'Start menu' }).getByRole('button', { name: /^ByteWire/ }).click()
     await expect(page.getByRole('heading', { name: 'Not Today, LimeWire.' })).toBeVisible()
     await page.getByRole('button', { name: 'Reset Simulation', exact: true }).click()
     await expect(page.getByRole('heading', { name: 'Not Today, LimeWire.' })).toHaveCount(0)

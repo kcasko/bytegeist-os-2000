@@ -1,7 +1,25 @@
 import { expect, it } from 'vitest'
 import { byteWireReducer as reduce, initialByteWire as initial, searchFiles } from '../src/apps/ByteWire/model'
 const start = () => reduce(initial, { type: 'begin' })
-const download = () => reduce(start(), { type: 'download', id: 'song' })
+const queue = () => reduce(start(), { type: 'download', id: 'song' })
+const finish = (state: ReturnType<typeof queue>) => Array.from({ length: 4 }).reduce<typeof state>(value => reduce(value, { type: 'tick' }), state)
+const download = () => finish(queue())
+it('progresses a transfer before exposing a completed downloadable file', () => {
+  const queued = queue()
+  expect(queued.progress.song).toBe(0)
+  expect(reduce(queued, { type: 'inspect', id: 'song' }).inspected).toEqual([])
+  const halfway = reduce(reduce(queued, { type: 'tick' }), { type: 'tick' })
+  expect(halfway.progress.song).toBe(50)
+  const complete = reduce(reduce(halfway, { type: 'tick' }), { type: 'tick' })
+  expect(complete.progress.song).toBe(100)
+  expect(reduce(complete, { type: 'tick' }).progress.song).toBe(100)
+})
+it('cancels an incomplete transfer and can queue it again', () => {
+  const cancelled = reduce(queue(), { type: 'cancel', id: 'song' })
+  expect(cancelled.downloads).toEqual([])
+  expect(cancelled.progress.song).toBeUndefined()
+  expect(reduce(cancelled, { type: 'download', id: 'song' }).progress.song).toBe(0)
+})
 it('requires consent before search or simulated downloads', () => {
   expect(reduce(initial, { type: 'download', id: 'song' })).toEqual(initial)
   expect(reduce(initial, { type: 'search', query: 'song' })).toEqual(initial)
@@ -21,7 +39,7 @@ it('awards prevention only after inspecting the suspicious downloaded file', () 
   expect(reduce(download(), { type: 'flag', id: 'song' }).prevented).toBe(false)
   const inspected = reduce(download(), { type: 'inspect', id: 'song' })
   expect(reduce(inspected, { type: 'flag', id: 'song' }).prevented).toBe(true)
-  const safe = reduce(reduce(start(), { type: 'download', id: 'mix' }), { type: 'inspect', id: 'mix' })
+  const safe = reduce(finish(reduce(start(), { type: 'download', id: 'mix' })), { type: 'inspect', id: 'mix' })
   expect(reduce(safe, { type: 'flag', id: 'mix' }).prevented).toBe(false)
 })
 it('reset clears progress and exit also revokes consent', () => {

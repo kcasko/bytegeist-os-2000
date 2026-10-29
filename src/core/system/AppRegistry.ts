@@ -5,6 +5,7 @@ export const apps: { id: AppId; title: string; description: string; icon: 'compu
   { id: 'about', title: 'About Keith', description: 'The person behind the keyboard', icon: 'person' },
   { id: 'skills', title: 'System Properties', description: 'Skills, tools & education', icon: 'tools' },
   { id: 'bytewire', title: 'ByteWire', description: 'Suspiciously good downloads', icon: 'wire' },
+  { id: 'downloads', title: 'Downloads', description: 'Open completed ByteWire files', icon: 'folder' },
   { id: 'taskmanager', title: 'Task Manager', description: 'Inspect and stop fictional processes', icon: 'tools' },
   { id: 'startup', title: 'Startup Manager', description: 'Find what survives a reboot', icon: 'tools' },
   { id: 'defender', title: 'ByteDefender', description: 'Quarantine, scan & verify recovery', icon: 'computer' },

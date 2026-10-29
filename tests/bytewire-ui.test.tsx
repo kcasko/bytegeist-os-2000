@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { expect, it } from 'vitest'
 import App from '../src/App'
@@ -12,6 +12,7 @@ it('opts in, downloads a fake file, reveals the executable and prevents infectio
   await user.click(screen.getByRole('button', { name: 'Search', exact: true }))
   await user.click(screen.getByRole('button', { name: 'Select this-is-a-song.mp3' }))
   await user.click(screen.getByRole('button', { name: 'Download selected (simulated)' }))
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Properties: this-is-a-song.mp3' })).toBeEnabled(), { timeout: 4000 })
   await user.click(screen.getByRole('button', { name: 'Properties: this-is-a-song.mp3' }))
   expect(screen.getByText('this-is-a-song.mp3.exe', { exact: true })).toBeVisible()
   await user.click(screen.getByRole('button', { name: 'Flag as suspicious' }))

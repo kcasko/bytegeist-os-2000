@@ -6,6 +6,7 @@ import type { AppId } from '../core/windows/windowReducer'
 import { About, Projects, Skills } from './Portfolio/Portfolio'
 import { Icon } from '../core/system/Icon'
 import { InfectionActivity } from '../game/effects/InfectionActivity'
+import { Downloads } from './ByteWire/Downloads'
 export function AppContent({ id, open }: { id: AppId; open: (id: AppId) => void }) {
   const bytewire = useContext(ByteWireSession)
   if (id === 'welcome') return <>
@@ -17,6 +18,7 @@ export function AppContent({ id, open }: { id: AppId; open: (id: AppId) => void 
   if (id === 'about') return <About />
   if (id === 'skills') return <Skills />
   if (id === 'bytewire') return <ByteWire key={bytewire?.revision} open={open} />
+  if (id === 'downloads') return <Downloads key={bytewire?.revision} open={open} />
   if (id === 'infection') return <InfectionActivity open={open} />
   return <Recovery id={id} open={open} />
 }

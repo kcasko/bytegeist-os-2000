@@ -23,9 +23,9 @@ Windows support pointer dragging, stacking, minimize/restore, maximize/restore a
 ## ByteWire incident BG-2000
 
 1. Open ByteWire and explicitly enter the simulation.
-2. Search, select a fictional file and simulate its download.
-3. Inspect Properties. Catch the disguised .exe and flag it to earn **Not Today, LimeWire.**
-4. Alternatively, choose Run simulated executable (or Try the infected route after prevention), then confirm the fictional infection.
+2. Search, select a fictional file and watch its transfer progress to Complete.
+3. Choose Open file, or Open Downloads and open the completed file there. Properties is optional; it can reveal the disguise and earn **Not Today, LimeWire.**
+4. Opening the disguised executable shows Open File - Security Warning. Run (simulated) starts the incident; Cancel backs out. Try the infected route remains available after prevention.
 5. Task Manager: inspect and end songhelper.exe.
 6. Startup Manager: inspect and disable ByteWire Helper.
 7. ByteDefender: inspect/quarantine the file, run a clean verification scan, then simulate reboot.
@@ -33,7 +33,7 @@ Windows support pointer dragging, stacking, minimize/restore, maximize/restore a
 
 During infection, up to three fictional warning windows return on a bounded timer. The wallpaper is hijacked, a rogue shortcut appears, and the tray/Task Manager show simulated high CPU. Small screens use a reserved activity strip instead of covering recovery controls. Hide pop-ups is available without pretending to remove the process.
 
-Ending the process alone does not remove persistence. Rebooting with an enabled startup entry and available executable causes reinfection. Global reset/exit controls remain available when game windows are closed. Portfolio windows stay open. Session progress is in memory only; refresh starts clean.
+Ending the process alone does not remove persistence. Rebooting with an enabled startup entry and available executable causes reinfection. Global reset/exit controls remain available when game windows are closed. Portfolio windows stay open. Transfers progress on a shared session timer, even with ByteWire closed; incomplete transfers can be cancelled and retried. Session progress is in memory only; refresh starts clean.
 
 All files, peers, scans, processes, reboots and warnings are synthetic. There are no actual downloads or execution, browser pop-ups, network searches, localStorage, credentials, analytics or device access.
 
@@ -45,7 +45,7 @@ npx playwright install chromium firefox webkit
 npm run test:e2e
 ```
 
-`check` runs lint, strict application TypeScript checking, 27 unit/component tests and production build. The browser suite defines 28 scenarios across Chromium, Firefox and WebKit: 83 passed, one unsupported Firefox mobile-emulation test skipped. Automated accessibility samples cover desktop, Start, skills, client, infection and recovery report. Touch emulation and reduced motion are exercised. Physical devices and screen-reader sessions remain manual checks.
+`check` runs lint, strict application TypeScript checking, 29 unit/component tests and production build. The browser suite defines 34 scenarios across Chromium, Firefox and WebKit: 101 passed, one unsupported Firefox mobile-emulation test skipped. Automated accessibility samples cover desktop, Start, skills, client, infection and recovery report. Touch emulation and reduced motion are exercised. Physical devices and screen-reader sessions remain manual checks.
 
 To test the production bundle:
 
@@ -61,7 +61,7 @@ $env:BYTEGEIST_TEST_URL='http://127.0.0.1:4180'
 npm run test:e2e
 ```
 
-The full 83-check cross-browser suite passed against the local production preview. Remote Linux CI is configured but has not run.
+The full 101-check cross-browser suite passed against the local production preview. Remote Linux CI is configured but has not run.
 
 ## Structure
 

@@ -49,3 +49,43 @@
 .bw-achievement h2 { margin-top: 10px; font: bold 20px Georgia; color: #2d532b; }
 .bw-achievement p { font-size: 11px; }
 @media (max-width: 640px) { .bw-consent { padding: 20px 16px; } .bw-actions button { min-height: 32px; } .bw-properties dl { grid-template-columns: 82px minmax(0, 1fr); } .bw-result-actions button { width: 100%; } }
+.transfer-summary { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.transfer-summary progress { width: 100%; height: 13px; margin-top: 8px; accent-color: #4b793c; }
+.transfer-actions { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+.transfer-actions button { font-size: 10px; min-height: 28px; }
+.bw-section-title>button { letter-spacing: 0; font-size: 10px; padding: 3px 7px; }
+.file-action-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.file-security-warning, .file-preview { margin: 16px 12px; border: 2px outset #eee; padding: 16px; background: #eeeade; }
+.file-security-warning { border-top: 5px solid #80531d; }
+.file-security-warning h2 { color: #5e3d18; font-size: 16px; }
+.file-security-warning dl { display: grid; grid-template-columns: 72px minmax(0,1fr); font-size: 11px; gap: 10px; }
+.file-security-warning dt { color: #5b5b51; }
+.file-security-warning dd { margin: 0; overflow-wrap: anywhere; font-weight: bold; }
+.file-preview pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/1.8 'Courier New',monospace; background: #fff; border: 2px inset #eee; padding: 12px; }
+.file-preview .bw-section-title { margin: -16px -16px 16px; }
+.file-preview h2 { overflow-wrap: anywhere; }
+.fake-player-display { margin: 16px 0; background: #182825; color: #b7e6a3; padding: 18px; font: 13px 'Courier New',monospace; border: 2px inset #ccc; }
+.downloads-app { background: #f7f7ef; min-height: 100%; color: #202426; padding-bottom: 10px; }
+.folder-menu { display: flex; gap: 20px; padding: 6px 12px; background: #d4d0c8; font-size: 11px; border-bottom: 1px solid #aaa; }
+.folder-toolbar { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 10px; background: #e4e2d9; }
+.folder-toolbar button { font-size: 10px; min-height: 28px; }
+.folder-address { display: flex; gap: 10px; padding: 6px 10px; background: #e4e2d9; align-items: center; }
+.folder-address span { font-size: 10px; }
+.folder-address strong { padding: 6px; background: white; border: 2px inset #eee; flex: 1; font: 11px 'Courier New',monospace; }
+.folder-intro { padding: 18px 14px; }
+.folder-intro h1 { font-size: 22px; margin-bottom: 5px; }
+.folder-intro p { font-size: 11px; }
+.folder-intro label { font-size: 10px; display: flex; align-items: center; gap: 5px; }
+.folder-files { overflow-x: auto; margin: 0 10px; border: 2px inset #eee; background: white; }
+.folder-files table { width: 100%; border-collapse: collapse; font-size: 10px; }
+.folder-files th { text-align: left; padding: 7px 6px; background: #e4e2d9; border-right: 1px solid #b8b8af; font-weight: normal; }
+.folder-files td { padding: 8px 6px; vertical-align: top; border-bottom: 1px solid #ddd; }
+.folder-files td:last-child { display: flex; gap: 4px; }
+.folder-files td button { font-size: 10px; }
+.folder-filename { text-align: left; padding: 4px 0; background: transparent; border: 0; box-shadow: none; color: #193f68; white-space: nowrap; }
+.folder-filename span { margin-right: 7px; font-size: 17px; color: #386039; }
+.folder-files small { display: block; color: #7a3724; margin-top: 4px; }
+.folder-selected { background: #e6edf4; }
+.folder-status { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 12px; font-size: 10px; color: #52606a; }
+.downloads-app button:disabled { color: #777; cursor: default; }
+@media(max-width:640px) { .downloads-app { padding-bottom: 12px; } .file-security-warning { margin: 12px 8px; padding: 12px; } .file-security-warning dl { grid-template-columns: 62px minmax(0,1fr); } }

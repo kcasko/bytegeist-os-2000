@@ -9,9 +9,9 @@ async function infect(page: import('@playwright/test').Page) {
   await page.getByRole('button', { name: 'Select this-is-a-song.mp3', exact: true }).click()
   await page.getByRole('button', { name: 'Download selected (simulated)', exact: true }).click()
   await page.getByRole('button', { name: 'Properties: this-is-a-song.mp3', exact: true }).click()
-  await page.getByRole('button', { name: 'Run simulated executable', exact: true }).click()
+  await page.getByRole('button', { name: 'Open file', exact: true }).click()
   await expect(page.getByRole('complementary', { name: 'Fictional malware warning' })).toHaveCount(0)
-  await page.getByRole('button', { name: 'Start fictional infection', exact: true }).click()
+  await page.getByRole('button', { name: 'Run (simulated)', exact: true }).click()
   await expect(page.getByRole('dialog', { name: 'Task Manager', exact: true })).toBeVisible()
 }
 
@@ -75,7 +75,7 @@ test('prevention can lead into the infected route with separate confirmation', a
   await page.getByRole('button', { name: 'Properties: this-is-a-song.mp3', exact: true }).click()
   await page.getByRole('button', { name: 'Flag as suspicious', exact: true }).click()
   await page.getByRole('button', { name: 'Try the infected route', exact: true }).click()
-  await page.getByRole('button', { name: 'Start fictional infection', exact: true }).click()
+  await page.getByRole('button', { name: 'Run (simulated)', exact: true }).click()
   await page.getByRole('button', { name: 'Task: ByteWire', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Not Today, LimeWire.' })).toHaveCount(0)
 })
@@ -99,9 +99,9 @@ test('global reset discards pending execution confirmation', async ({ page }) =>
   await page.getByRole('button', { name: 'Select this-is-a-song.mp3', exact: true }).click()
   await page.getByRole('button', { name: 'Download selected (simulated)', exact: true }).click()
   await page.getByRole('button', { name: 'Properties: this-is-a-song.mp3', exact: true }).click()
-  await page.getByRole('button', { name: 'Run simulated executable', exact: true }).click()
+  await page.getByRole('button', { name: 'Open file', exact: true }).click()
   await page.getByRole('button', { name: 'Reset incident', exact: true }).click()
-  await expect(page.getByRole('button', { name: 'Start fictional infection', exact: true })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Run (simulated)', exact: true })).toHaveCount(0)
 })
 
 test('Start reaches the last utility while simulation controls are active', async ({ page }) => {
