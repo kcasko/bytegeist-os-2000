@@ -80,4 +80,14 @@ The full 101-check cross-browser suite passed against the local production previ
 
 Local only. No GitHub remote, public deployment, AWS resources or submission have been created. Both casko.dev and bytespace.casko.dev remain untouched. amplify.yml selects Node 22 and static dist output. Public deployment and submission require Keith's confirmation. See docs/CHALLENGE_FIT.md, docs/RELEASE_CHECKLIST.md and docs/SUBMISSION_DRAFT.md.
 
-Optional sound, preference/progress storage, a terminal and window resize handles are deferred. The P0 portfolio and one complete incident scenario work locally.
+Optional sound, storage across page refreshes and a terminal are deferred. The P0 portfolio and one complete incident scenario work locally.
+
+## Desktop controls
+
+Single-click selects a desktop shortcut; double-click opens it. Touch uses one tap, and Enter opens a focused shortcut. Drag shortcuts to arrange them; right-click the desktop to refresh, arrange, launch utilities or change the background.
+
+Drag window titles and any edge/corner to move and resize. Double-click a title to maximize/restore. The upper-left icon and title right-click open the system menu. A focused title moves with arrow keys; the southeast resize handle resizes with arrow keys. Shift increases the step. Alt+Space opens the window menu; Ctrl+F6 cycles open windows. Taskbar buttons retain launch order, support right-click actions, and Show Desktop hides/restores visible windows.
+
+Start includes Run, Notepad, Display Properties and Shut Down. Run recognizes the programs listed in its help. Notepad saves within the current tab session; saved text survives a virtual restart. Unsaved text is discarded on shutdown/restart after the visible warning. Refresh clears session storage. Clock opens a working month calendar.
+
+Restart performs shutdown, black screen, BIOS-style checks, branded loading and sign-in before opening the desktop. Skip startup finishes the same boot immediately. ByteDefender uses this same sequence. Downloads, saved notes and startup configuration survive; unfinished transfers cancel, windows close, and enabled malware startup reinfects at sign-in. No sound or long first-visit boot blocks portfolio navigation.

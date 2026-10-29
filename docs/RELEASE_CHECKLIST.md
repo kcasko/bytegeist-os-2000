@@ -32,4 +32,4 @@ No public deployment or submission has been authorized. The application is a sta
 
 ## Manual verification limits
 
-No physical touch device or screen-reader session has been tested. Automation is not a complete accessibility certification. The game is one deterministic scenario. Optional sound, localStorage preferences/progress, terminal and window resizing are deferred; they are not needed for the P0 experience.
+No physical touch device or screen-reader session has been tested. Automation is not a complete accessibility certification. The game is one deterministic scenario. Optional sound, localStorage preferences/progress, terminal are deferred; they are not needed for the P0 experience.

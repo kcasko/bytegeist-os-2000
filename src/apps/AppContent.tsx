@@ -7,6 +7,7 @@ import { About, Projects, Skills } from './Portfolio/Portfolio'
 import { Icon } from '../core/system/Icon'
 import { InfectionActivity } from '../game/effects/InfectionActivity'
 import { Downloads } from './ByteWire/Downloads'
+import { DisplayProperties, Notepad, Run } from './Shell/ShellApps'
 export function AppContent({ id, open }: { id: AppId; open: (id: AppId) => void }) {
   const bytewire = useContext(ByteWireSession)
   if (id === 'welcome') return <>
@@ -19,6 +20,9 @@ export function AppContent({ id, open }: { id: AppId; open: (id: AppId) => void 
   if (id === 'skills') return <Skills />
   if (id === 'bytewire') return <ByteWire key={bytewire?.revision} open={open} />
   if (id === 'downloads') return <Downloads key={bytewire?.revision} open={open} />
+  if (id === 'notepad') return <Notepad />
+  if (id === 'display') return <DisplayProperties />
+  if (id === 'run') return <Run open={open} />
   if (id === 'infection') return <InfectionActivity open={open} />
   return <Recovery id={id} open={open} />
 }

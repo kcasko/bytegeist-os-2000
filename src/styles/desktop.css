@@ -100,3 +100,23 @@ legend { color: #264c72; }
 .simulation-active .start-menu { bottom: 88px; max-height: calc(100dvh - 88px); }
 .portfolio-shortcuts { display: flex; flex-wrap: wrap; gap: 6px; padding: 7px 12px; border-bottom: 1px solid #aeb7bd; background: #dce2e5; }
 .portfolio-shortcuts button { min-height: 28px; font-size: 11px; }
+.desktop:focus { outline: none; }
+.desktop.background-blue { background-color: #163c60; }
+.desktop.background-teal { background-color: #086465; }
+.desktop.background-slate { background-color: #3e454d; }
+.desktop-icons.os-shortcuts { inset: 0; width: auto; display: block; pointer-events: none; z-index: 0; }
+.os-shortcuts button { position: absolute; width: 88px; height: 80px; pointer-events: auto; touch-action: none; user-select: none; justify-content: start; }
+.os-shortcuts button[aria-pressed=true] { background: #164384; border: 1px dotted #d5e4f3; }
+.os-shortcuts button span:last-child { max-width: 85px; }
+.os-context-menu { position: fixed; width: 210px; background: #d4d0c8; border: 2px outset #eee; box-shadow: 3px 3px #0006; padding: 3px; z-index: 10020; overflow-y: auto; }
+.os-context-menu button { display: block; width: 100%; border: 0; box-shadow: none; text-align: left; padding: 7px 16px; font-size: 11px; background: transparent; min-height: 29px; }
+.os-context-menu button:hover:not(:disabled), .os-context-menu button:focus-visible { background: #113a73; color: white; outline: none; }
+.os-context-menu button:disabled { color: #6e706c; cursor: default; }
+.os-context-menu .menu-separator { border-top: 1px solid #999; margin-top: 4px; }
+.show-desktop { width: 30px; min-width: 30px; height: 32px; padding: 4px; overflow: hidden; }
+.show-desktop .pixel-icon { transform: scale(.55); transform-origin: left top; }
+.tray-clock { padding: 0; background: transparent; border: 0; box-shadow: none; font-size: 11px; white-space: nowrap; }
+.start-section-label { font: bold 9px 'Courier New',monospace; color: #4c5660; margin: 7px 12px 0; padding-top: 10px; border-top: 1px solid #999; }
+.start-footer button { font-size: 12px; min-height: 34px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+@media (max-width:640px) { .show-desktop { width: 26px; min-width: 26px; padding-left: 2px; } }

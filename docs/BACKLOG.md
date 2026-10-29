@@ -20,3 +20,11 @@ Workflow: Ready → In progress → Verified. Each ticket requires acceptance ev
 | BG-401 | P1 | Later | Optional preferences/progress persistence, sound opt-in and small Easter eggs | Ready |
 
 Definition of done: acceptance met, relevant automated checks green, limitations documented, no regression to existing sites. Local P0 portfolio and incident are complete. Public AWS release, account eligibility and submission evidence remain pending; no claim of a complete contest entry.
+
+## Desktop authenticity follow-up
+
+| ID | Priority | Acceptance | Status |
+| --- | --- | --- | --- |
+| BG-205 | P1 | Select/double-click/drag shortcuts; desktop/window/taskbar menus; 8-edge resizing; stable task order and Show Desktop | Verified locally: RC5 |
+| BG-206 | P1 | Run whitelist, session Notepad, applied display preferences, calendar, virtual shutdown/restart | Verified locally: RC5 |
+| BG-207 | P1 | Shared staged reboot for Start and recovery; skip; preserved startup/files/notes; reinfection only after sign-in | Verified locally: RC5 |

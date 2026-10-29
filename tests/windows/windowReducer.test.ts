@@ -5,6 +5,28 @@ const welcome = () => reduce(initialState, { type: 'open', id: 'welcome', bounds
 const pair = () => reduce(welcome(), { type: 'open', id: 'about', bounds })
 
 describe('desktop window lifecycle', () => {
+  it('resizes within minimums and viewport bounds without losing restore geometry', () => {
+    const resized = reduce(welcome(), { type: 'resize-window', id: 'welcome', x: 100, y: 50, width: 720, height: 580, bounds })
+    expect(resized.windows[0]).toMatchObject({ x: 100, y: 50, width: 720, height: 580 })
+    const max = reduce(resized, { type: 'maximize', id: 'welcome' })
+    expect(reduce(max, { type: 'maximize', id: 'welcome' }).windows[0]).toEqual(resized.windows[0])
+    expect(reduce(resized, { type: 'resize-window', id: 'welcome', x: -10, y: -10, width: 10, height: 10, bounds }).windows[0]).toMatchObject({ x: 0, y: 0, width: 320, height: 240 })
+  })
+  it('keeps launch order stable when focus changes and cycles only visible windows', () => {
+    const old = pair()
+    const next = reduce(old, { type: 'focus', id: 'welcome' })
+    expect(next.windows.find(w => w.id === 'welcome')?.order).toBe(old.windows[0].order)
+    expect(old.windows[0].order).toBeLessThan(old.windows[1].order)
+    expect(reduce(next, { type: 'cycle' }).active).toBe('about')
+    const minimized = reduce(next, { type: 'minimize', id: 'about' })
+    expect(reduce(minimized, { type: 'cycle' }).active).toBe('welcome')
+  })
+  it('minimizes all windows and resets the virtual desktop', () => {
+    const hidden = reduce(pair(), { type: 'minimize-all' })
+    expect(hidden.active).toBeNull()
+    expect(hidden.windows.every(w => w.minimized)).toBe(true)
+    expect(reduce(pair(), { type: 'reset' })).toEqual(initialState)
+  })
   it('opens a single instance and restores it after minimizing', () => {
     const minimized = reduce(welcome(), { type: 'minimize', id: 'welcome' })
     const restored = reduce(minimized, { type: 'open', id: 'welcome', bounds })

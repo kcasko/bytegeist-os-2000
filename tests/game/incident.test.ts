@@ -3,6 +3,11 @@ import { incidentReducer as r, initialIncident as initial } from '../../src/game
 const ready = () => r(r(initial, { type: 'consent' }), { type: 'download' })
 const infected = () => r(ready(), { type: 'execute' })
 const removed = () => r(r(r(infected(), { type: 'end-process' }), { type: 'disable-startup' }), { type: 'quarantine' })
+it('powering off stops symptoms while installed startup survives the next boot', () => {
+  const off = r(infected(), { type: 'poweroff' })
+  expect(off).toMatchObject({ processRunning: false, startupEnabled: true, stage: 'contained' })
+  expect(r(off, { type: 'reboot' })).toMatchObject({ processRunning: true, startupEnabled: true, stage: 'infected' })
+})
 it('requires consent and downloaded file before execution', () => {
   expect(r(initial, { type: 'execute' })).toEqual(initial)
   expect(r(r(initial, { type: 'consent' }), { type: 'execute' }).everInfected).toBe(false)

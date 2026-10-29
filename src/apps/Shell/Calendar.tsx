@@ -1,0 +1,8 @@
+import { useState } from 'react'
+export function Calendar({ dismiss }: { dismiss: () => void }) {
+  const [today] = useState(() => new Date())
+  const [month, setMonth] = useState(() => new Date(today.getFullYear(), today.getMonth(), 1))
+  const start = new Date(month.getFullYear(), month.getMonth(), 1).getDay()
+  const count = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate()
+  return <section className="calendar-popup" role="dialog" aria-label="Date and Time"><header><strong>Date and Time</strong><button aria-label="Close Date and Time" onClick={dismiss}>×</button></header><div className="calendar-heading"><button aria-label="Previous month" onClick={() => setMonth(value => new Date(value.getFullYear(), value.getMonth() - 1, 1))}>‹</button><strong>{month.toLocaleDateString([], { month: 'long', year: 'numeric' })}</strong><button aria-label="Next month" onClick={() => setMonth(value => new Date(value.getFullYear(), value.getMonth() + 1, 1))}>›</button></div><table aria-label="Calendar"><thead><tr>{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => <th key={day} scope="col">{day}</th>)}</tr></thead><tbody>{Array.from({ length: Math.ceil((start + count) / 7) }, (_, row) => <tr key={row}>{Array.from({ length: 7 }, (_, column) => { const day = row * 7 + column - start + 1; return <td key={column} className={day === today.getDate() && month.getMonth() === today.getMonth() && month.getFullYear() === today.getFullYear() ? 'calendar-today' : ''}>{day > 0 && day <= count ? day : ''}</td> })}</tr>)}</tbody></table><p>{today.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</p><button onClick={() => setMonth(new Date(today.getFullYear(), today.getMonth(), 1))}>Today</button></section>
+}
