@@ -44,3 +44,15 @@ it('exits and resets without mutating old state', () => {
   expect(r(old, { type: 'reset' })).toEqual({ ...initial, enabled: true })
   expect(old.processRunning).toBe(true)
 })
+
+it('reports disabled startup accurately when its process is already stopped', () => {
+  const result = r(r(infected(), { type: 'end-process' }), { type: 'disable-startup' })
+  expect(result.notice).toContain('already stopped')
+  expect(result.notice).not.toContain('must still')
+})
+it('distinguishes restarting from powering off without losing scan verification', () => {
+  const result = r(r(removed(), { type: 'scan' }), { type: 'restart' })
+  expect(result.notice).toContain('restarting')
+  expect(result.scanClean).toBe(true)
+  expect(r(result, { type: 'reboot' }).stage).toBe('recovered')
+})

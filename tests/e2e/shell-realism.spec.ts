@@ -52,6 +52,7 @@ test('Run launches Notepad and saved session notes reopen', async ({ page }) => 
   await page.getByRole('button', { name: 'Close Notepad', exact: true }).click()
   await page.getByRole('button', { name: 'Start', exact: true }).click()
   await page.getByRole('navigation', { name: 'Start menu' }).getByRole('button', { name: 'Run…', exact: true }).click()
+  await run.getByRole('textbox', { name: 'Open:' }).fill('notepad.exe')
   await run.getByRole('button', { name: 'OK', exact: true }).click()
   await expect(note.getByRole('textbox', { name: 'Notepad document' })).toHaveValue('Check startup before reboot.')
 })

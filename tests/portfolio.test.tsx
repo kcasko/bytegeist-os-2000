@@ -13,7 +13,7 @@ it('offers complete project case studies and direct evidence links', async () =>
 it('makes education, credentials and contact directly available', async () => {
   const user = userEvent.setup()
   render(<App />)
-  await user.dblClick(within(screen.getByRole('navigation', { name: 'Desktop applications' })).getByRole('button', { name: 'System Properties' }))
+  await user.dblClick(within(screen.getByRole('navigation', { name: 'Desktop applications' })).getByRole('button', { name: 'Skills · System Properties' }))
   expect(screen.getByRole('link', { name: /AWS Certified Cloud Practitioner/ })).toHaveAttribute('href', expect.stringContaining('credly.com'))
   expect(screen.getByRole('link', { name: /Google IT Support/ })).toBeVisible()
 })
@@ -27,5 +27,5 @@ it('labels all required sections and the optional creative feature on Welcome', 
   expect(within(sections).getByRole('button', { name: 'Projects', exact: true })).toBeVisible()
   expect(within(welcome).getByText(/optional malware recovery game/)).toBeVisible()
   await user.click(within(sections).getByRole('button', { name: 'Skills', exact: true }))
-  expect(screen.getByRole('dialog', { name: 'System Properties', exact: true })).toBeVisible()
+  expect(screen.getByRole('dialog', { name: 'Skills · System Properties', exact: true })).toBeVisible()
 })

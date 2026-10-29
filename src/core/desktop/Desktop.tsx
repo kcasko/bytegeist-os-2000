@@ -2,7 +2,9 @@ import { useCallback, useContext, useEffect, useReducer, useRef, useState } from
 import { useIncident } from '../../game/IncidentSession'
 import { ByteWireSession } from '../../apps/ByteWire/session'
 import { initialState, windowReducer } from '../windows/windowReducer'
-import type { AppId } from '../windows/windowReducer'
+import type { AppId, WindowAction } from '../windows/windowReducer'
+import type { Decision } from '../system/DesktopSession'
+import { DecisionDialog } from '../../apps/Shell/DecisionDialog'
 import { ContextMenu } from './ContextMenu'
 import { DesktopIcons } from './DesktopIcons'
 import { DesktopSession } from '../system/DesktopSession'
@@ -30,6 +32,7 @@ export function Desktop() {
   const [desktopMenu, setDesktopMenu] = useState<{ x: number; y: number } | null>(null)
   const [calendarOpen, setCalendarOpen] = useState(false)
   const [powerOpen, setPowerOpen] = useState(false)
+  const [decision, decide] = useState<Decision | null>(null)
   const [poweredOff, setPoweredOff] = useState(false)
   const [boot, setBoot] = useState<'restart' | 'cold' | null>(null)
   const [desktopStatus, setDesktopStatus] = useState('')
@@ -40,6 +43,14 @@ export function Desktop() {
   const [processInvestigation, setProcessInvestigation] = useState(0)
   const startRef = useRef<HTMLButtonElement>(null)
   const dismiss = () => { setStartOpen(false); startRef.current?.focus() }
+  const close = (id: AppId) => {
+    if (id === 'notepad' && notes !== savedNotes) decide({ title: 'Save changes to Notes.txt?', message: 'Your document has unsaved changes.', choices: [
+      { label: 'Save', action: () => { saveNotes(notes); dispatch({ type: 'close', id }) } },
+      { label: "Don't save", action: () => { setNotes(savedNotes); dispatch({ type: 'close', id }) } },
+    ] })
+    else dispatch({ type: 'close', id })
+  }
+  const windowAction = (action: WindowAction) => action.type === 'close' ? close(action.id) : dispatch(action)
   const open = (id: AppId) => { dispatch({ type: 'open', id, bounds: bounds() }); setStartOpen(false); setDesktopMenu(null); setCalendarOpen(false); setFocusRequest(value => value + 1) }
   const clearSimulation = (exit: boolean) => {
     setProcessInvestigation(0)
@@ -74,7 +85,7 @@ export function Desktop() {
     cancelPending()
     setNotes(savedNotes)
     dispatch({ type: 'reset' })
-    incident.dispatch({ type: 'poweroff' })
+    incident.dispatch({ type: poweredOff ? 'poweroff' : 'restart' })
     setBoot(poweredOff ? 'cold' : 'restart')
     setPoweredOff(false)
     setPowerOpen(false)
@@ -88,14 +99,14 @@ export function Desktop() {
     setProcessInvestigation(value => value + 1)
     open('taskmanager')
   }
-  const preferences = { wallpaper, setWallpaper, notes, setNotes, savedNotes, saveNotes, restart, processInvestigation }
+  const preferences = { wallpaper, setWallpaper, notes, setNotes, savedNotes, saveNotes, restart, processInvestigation, close, decide }
   if (boot) return <BootScreen cold={boot === 'cold'} complete={completeBoot} />
   if (poweredOff) return <DesktopSession.Provider value={preferences}><div className="powered-off"><h1>It is now safe to close this tab.</h1><p>ByteGeist OS 2000 is turned off.</p><button onClick={restart}>Start computer</button></div></DesktopSession.Provider>
   const activeWindow = state.windows.find(win => win.id === state.active)
   const warningsWouldCoverWindow = Boolean(activeWindow && (activeWindow.maximized || activeWindow.x + activeWindow.width > window.innerWidth - 340))
   return <DesktopSession.Provider value={preferences}><main ref={desktopRef} tabIndex={-1} className={`desktop background-${wallpaper} ${incident.state.enabled ? 'simulation-active' : ''} ${incident.state.processRunning ? 'infected' : ''}`} aria-label="ByteGeist OS 2000 desktop"
     onKeyDown={event => {
-      if (powerOpen) return
+      if (powerOpen || decision) return
       if (event.key === 'Escape') { if (startOpen) dismiss(); if (calendarOpen) { setCalendarOpen(false); clockRef.current?.focus() }; setDesktopMenu(null) }
       if (event.ctrlKey && event.key === 'F6') { event.preventDefault(); dispatch({ type: 'cycle' }) }
       if (event.key === 'F5' && !(event.target as Element).closest('[role="dialog"]')) { event.preventDefault(); setDesktopStatus('Desktop refreshed.'); desktopRef.current?.focus() }
@@ -108,12 +119,12 @@ export function Desktop() {
     }}>
     <div className="wallpaper" aria-hidden="true"><div className="wallpaper-symbol">{incident.state.processRunning ? '!' : 'bg'}</div><div className="wallpaper-name">{incident.state.processRunning ? 'songhelper.exe' : 'ByteGeist'}<span>OS 2000</span></div><p>{incident.state.processRunning ? 'YOUR MP3 CAME WITH ROOMMATES' : 'PROFESSIONAL EDITION'}</p><div className="wallpaper-rule" />{incident.state.processRunning && <span className="hijack-label">FICTIONAL DESKTOP HIJACK<br />PROCESS ACTIVE / STARTUP INSTALLED</span>}</div>
     <DesktopIcons key={arrange} open={open} bounds={bounds} />
-    {incident.state.enabled && <aside className="simulation-bar" aria-label="Simulation controls"><strong>FICTIONAL SIMULATION / {incident.state.stage.toUpperCase()}</strong><button onClick={() => open('taskmanager')}>Recovery tools</button><button onClick={() => clearSimulation(false)}>Reset incident</button><button onClick={() => clearSimulation(true)}>Exit entire simulation</button></aside>}
+    {incident.state.enabled && <aside className="simulation-bar" aria-label="Simulation controls"><strong>FICTIONAL SIMULATION / {incident.state.stage.toUpperCase()}</strong><button onClick={() => open('taskmanager')}>Recovery tools</button><button onClick={() => decide({ title: 'Reset incident?', message: 'This clears downloads, recovery progress, and the incident report.', choices: [{ label: 'Reset', action: () => clearSimulation(false) }] })}>Reset incident</button><button onClick={() => clearSimulation(true)}>Exit entire simulation</button></aside>}
     {incident.state.processRunning && <><button className="rogue-shortcut" onClick={() => open('infection')}><strong aria-hidden="true">!</strong><span>ByteGuard 2000</span><small>UNINVITED GUEST</small></button><InfectionEffects key={incident.state.rebootCount} compact={window.innerWidth < 1280} obscured={warningsWouldCoverWindow} onInvestigate={investigateProcess} onActivity={() => open('infection')} /></>}
     <div className="desktop-build" aria-hidden="true">ByteGeist OS 2000 Professional<br />Build 0003 · The internet was a mistake. Let's relive it.</div>
-    {state.windows.map((win, index) => !win.minimized && <Window key={win.id} win={win} active={state.active === win.id} focusRequest={focusRequest} zIndex={index + 1} dispatch={dispatch} bounds={bounds}><AppContent id={win.id} open={open} /></Window>)}
+    {state.windows.map((win, index) => !win.minimized && <Window key={win.id} win={win} active={state.active === win.id} focusRequest={focusRequest} zIndex={index + 1} dispatch={windowAction} bounds={bounds}><AppContent id={win.id} open={open} /></Window>)}
     {startOpen && <StartMenu open={open} dismiss={dismiss} power={() => { setStartOpen(false); setPowerOpen(true) }} />}
-    <Taskbar state={state} clockRef={clockRef} clock={() => { setCalendarOpen(value => !value); setStartOpen(false) }} showDesktop={showDesktop} restore={open} dispatch={dispatch} infected={incident.state.processRunning} onActivity={() => open('infection')} startOpen={startOpen} startRef={startRef} toggleStart={() => setStartOpen(value => !value)} select={id => {
+    <Taskbar state={state} clockRef={clockRef} clock={() => { setCalendarOpen(value => !value); setStartOpen(false) }} showDesktop={showDesktop} restore={open} dispatch={windowAction} infected={incident.state.processRunning} onActivity={() => open('infection')} startOpen={startOpen} startRef={startRef} toggleStart={() => setStartOpen(value => !value)} select={id => {
       if (state.active === id) dispatch({ type: 'minimize', id })
       else open(id)
     }} />
@@ -128,5 +139,6 @@ export function Desktop() {
       { label: 'Properties', separator: true, action: () => open('display') },
     ]} />}
     {powerOpen && <PowerDialog unsaved={notes !== savedNotes} cancel={cancelPower} restart={restart} turnOff={turnOff} />}
+    {decision && <DecisionDialog decision={decision} dismiss={() => decide(null)} />}
   </main></DesktopSession.Provider>
 }

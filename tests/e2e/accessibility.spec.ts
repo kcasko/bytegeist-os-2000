@@ -6,7 +6,7 @@ test('desktop, Start and portfolio apps pass automated accessibility checks', as
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([])
   await page.getByRole('button', { name: 'Start', exact: true }).click()
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([])
-  await page.getByRole('navigation', { name: 'Start menu' }).getByRole('button', { name: /System Properties/ }).click()
+  await page.getByRole('navigation', { name: 'Start menu' }).getByRole('button', { name: /Skills · System Properties/ }).click()
   expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([])
 })
 

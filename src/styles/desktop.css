@@ -120,3 +120,15 @@ legend { color: #264c72; }
 .start-footer button { font-size: 12px; min-height: 34px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 @media (max-width:640px) { .show-desktop { width: 26px; min-width: 26px; padding-left: 2px; } }
+.start-menu { overflow:hidden; }
+.start-items { display:flex; flex-direction:column; min-height:0; }
+.start-items>p { flex-shrink:0; margin:4px 0; padding-bottom:5px; }
+.start-programs { overflow:auto; min-height:0; }
+.start-programs button { padding:5px 10px; gap:8px; }
+.start-programs .pixel-icon { transform:scale(.7); width:35px; height:35px; flex-shrink:0; }
+.start-programs small { margin-top:2px; }
+.start-footer { flex-shrink:0; margin-top:3px; padding:3px; }
+.start-footer button { min-height:30px; padding:6px 10px; }
+.desktop-build { line-height:1.5; max-width:calc(100% - 24px); }
+@media(max-height:430px) { .desktop-build { display:none; } }
+.pixel-icon.icon-document { background:repeating-linear-gradient(to bottom,#fff 0,#fff 7px,#8da9bd 8px,#fff 9px); border:2px solid #657f91; width:28px; height:34px; margin:4px 8px; box-shadow:2px 2px #0003; }

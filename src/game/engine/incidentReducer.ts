@@ -4,7 +4,7 @@ export type IncidentState = {
   enabled: boolean; stage: IncidentStage; hasFile: boolean; processRunning: boolean; startupEnabled: boolean;
   quarantined: boolean; scanClean: boolean; rebootCount: number; everInfected: boolean; evidence: Evidence[]; events: string[]; notice: string
 }
-export type IncidentAction = { type: 'consent' | 'exit' | 'reset' | 'download' | 'execute' | 'end-process' | 'disable-startup' | 'quarantine' | 'scan' | 'reboot' | 'poweroff' } | { type: 'inspect'; evidence: Evidence }
+export type IncidentAction = { type: 'consent' | 'exit' | 'reset' | 'download' | 'execute' | 'end-process' | 'disable-startup' | 'quarantine' | 'scan' | 'reboot' | 'poweroff' | 'restart' } | { type: 'inspect'; evidence: Evidence }
 export const initialIncident: IncidentState = { enabled: false, stage: 'clean', hasFile: false, processRunning: false, startupEnabled: false, quarantined: false, scanClean: false, rebootCount: 0, everInfected: false, evidence: [], events: [], notice: '' }
 const clean = (state: IncidentState) => !state.processRunning && !state.startupEnabled && state.quarantined
 function event(state: IncidentState, patch: Partial<IncidentState>, notice: string): IncidentState {
@@ -22,9 +22,10 @@ export function incidentReducer(state: IncidentState, action: IncidentAction): I
     return event(state, { stage: 'infected', processRunning: true, startupEnabled: true, scanClean: false, everInfected: true }, 'Fictional executable launched: songhelper.exe created a ByteWire Helper startup entry.')
   }
   if (!state.everInfected) return state
+  if (action.type === 'restart') return event(state, { processRunning: false, stage: state.stage === 'recovered' ? 'recovered' : 'contained' }, 'Virtual computer restarting. Closing programs and saving startup configuration.')
   if (action.type === 'poweroff') return event(state, { processRunning: false, stage: state.stage === 'recovered' ? 'recovered' : 'contained' }, 'Virtual computer powered off. Startup configuration and completed files remain for the next sign-in.')
   if (action.type === 'end-process') return state.processRunning ? event(state, { processRunning: false, stage: 'contained', scanClean: false }, 'songhelper.exe stopped. Symptoms are contained; startup persistence may remain.') : state
-  if (action.type === 'disable-startup') return state.startupEnabled ? event(state, { startupEnabled: false, scanClean: false, stage: state.processRunning ? 'infected' : 'remediating' }, 'ByteWire Helper startup entry disabled. A running process must still be stopped.') : state
+  if (action.type === 'disable-startup') return state.startupEnabled ? event(state, { startupEnabled: false, scanClean: false, stage: state.processRunning ? 'infected' : 'remediating' }, state.processRunning ? 'ByteWire Helper startup entry disabled. songhelper.exe is still running; stop it next.' : 'ByteWire Helper startup entry disabled. songhelper.exe is already stopped.') : state
   if (action.type === 'quarantine') {
     if (state.quarantined) return state
     if (state.processRunning) return event(state, {}, 'Quarantine blocked: songhelper.exe is still running. Contain the process first.')

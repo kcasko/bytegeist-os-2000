@@ -27,3 +27,4 @@
 .edge_se { right: 0; bottom: 0; cursor: nwse-resize; background: repeating-linear-gradient(135deg,transparent 0,transparent 2px,#7b7b72 2px,#7b7b72 3px); }
 .edge_sw { left: -2px; bottom: -2px; cursor: nesw-resize; }
 @media (max-width: 640px) { .window { left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; } .controls button { width: 30px; height: 29px; } .titlebar { min-height: 35px; } .resizeEdge { display: none; } }
+.controls button { color: #111; background: #d4d0c8; } .window { max-width: 100%; max-height: 100%; } .titlebar { align-items: stretch; }

@@ -28,3 +28,8 @@
 
 @media (max-width: 1000px) { .simulation-bar strong { display: none; } }
 .process-details:focus { outline: 2px solid #174f7a; outline-offset: 2px; background: #e3eef6; }
+.task-process-actions { position:static; box-shadow:none; }
+.process-details { scroll-margin-block:15px; }
+.scanner-actions { padding:8px; border:2px groove #eee; background:#e9e6d9; }
+.scanner-actions .incident-notice { margin:0 0 9px; padding:8px; border-left:4px solid #285987; background:#fff; color:#202426; }
+.bw-results tbody tr { cursor:pointer; }

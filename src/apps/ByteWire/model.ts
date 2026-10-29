@@ -17,16 +17,16 @@ export function byteWireReducer(state: ByteWireState, action: ByteWireAction): B
     const pending = state.downloads.filter(id => (state.progress[id] ?? 0) < 100)
     if (!pending.length) return state
     const progress = { ...state.progress }
-    for (const id of pending) progress[id] = Math.min(100, (progress[id] ?? 0) + 25)
+    for (const id of pending) progress[id] = Math.min(100, (progress[id] ?? 0) + 10)
     const finished = pending.filter(id => progress[id] === 100)
     return { ...state, progress, notice: finished.length ? 'Transfer complete. Open the file or find it in C:\\Downloads.' : 'Downloading from a fictional peer…' }
   }
-  if (action.type === 'search') return { ...state, query: action.query, searched: true, selected: null, notice: '' }
+  if (action.type === 'search') return { ...state, query: action.query, searched: true, selected: null, notice: `${searchFiles(action.query).length} files found. Select a file to download.` }
   if (!('id' in action)) return state
   const file = files.find(file => file.id === action.id)
   if (!file) return state
   if (action.type === 'select') return { ...state, selected: action.id }
-  if (action.type === 'download') return state.downloads.includes(action.id) ? state : { ...state, selected: action.id, downloads: [...state.downloads, action.id], progress: { ...state.progress, [action.id]: 0 }, notice: 'Connecting to fictional peer…' }
+  if (action.type === 'download') return state.downloads.includes(action.id) ? { ...state, notice: isComplete(state, action.id) ? 'Already downloaded. Open it from Transfers or Downloads.' : 'This file is already downloading. Follow its progress in Transfers.' } : { ...state, selected: action.id, downloads: [...state.downloads, action.id], progress: { ...state.progress, [action.id]: 0 }, notice: 'Connecting to fictional peer…' }
   if (action.type === 'cancel' && !isComplete(state, action.id)) {
     const progress = { ...state.progress }
     delete progress[action.id]

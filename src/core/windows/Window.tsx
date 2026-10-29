@@ -29,7 +29,7 @@ export function Window({ win, active, focusRequest, zIndex, dispatch, bounds, ch
     onKeyDown={event => { if (event.altKey && event.key === ' ') { event.preventDefault(); event.stopPropagation(); const box = panel.current!.getBoundingClientRect(); showMenu(box.x + 5, box.y + 30) } }}
     onPointerDown={() => { if (!active) dispatch({ type: 'focus', id: win.id }) }}
     onFocusCapture={() => { if (!active) dispatch({ type: 'focus', id: win.id }) }}>
-    <div className={styles.titlebar} onContextMenu={event => { event.preventDefault(); event.stopPropagation(); showMenu(event.clientX, event.clientY) }}>
+    <div className={styles.titlebar} onDoubleClick={event => { if (!(event.target as Element).closest(`button`)) dispatch({ type: `maximize`, id: win.id }) }} onContextMenu={event => { event.preventDefault(); event.stopPropagation(); showMenu(event.clientX, event.clientY) }}>
       <button className={styles.systemIcon} aria-label={`Window menu ${app.title}`} onClick={event => { const box = event.currentTarget.getBoundingClientRect(); showMenu(box.x, box.bottom) }}><Icon kind={app.icon} /></button>
       <button ref={handle} className={styles.handle} aria-label={`Move ${app.title}`} title="Drag to move. Arrow keys move 16 pixels; Shift + arrows move 64."
         onDoubleClick={() => dispatch({ type: 'maximize', id: win.id })}

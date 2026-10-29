@@ -28,6 +28,7 @@ for (const width of [320, 390, 768, 1440]) {
     await page.getByRole('navigation', { name: 'Start menu' }).getByRole('button', { name: /^ByteWire/ }).click()
     await expect(page.getByRole('heading', { name: 'Not Today, LimeWire.' })).toBeVisible()
     await page.getByRole('button', { name: 'Reset Simulation', exact: true }).click()
+    await page.getByRole('alertdialog', { name: 'Reset incident?' }).getByRole('button', { name: 'Reset', exact: true }).click()
     await expect(page.getByRole('heading', { name: 'Not Today, LimeWire.' })).toHaveCount(0)
     await expect(page.getByText('No transfers yet. Nothing will be saved to your device.')).toBeVisible()
     await page.getByRole('button', { name: 'Exit Simulation', exact: true }).click()

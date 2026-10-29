@@ -20,7 +20,7 @@ export function Downloads({ open }: { open: (id: AppId) => void }) {
   const displayName = (file: (typeof files)[number]) => extensions ? file.fullName : file.fullName.replace(/\.[^.]+$/, '')
   const blocked = (id: FileId) => id === 'song' && (state.prevented || incident.state.quarantined)
   return <div className="downloads-app">
-    <div className="folder-menu"><span>File</span><span>Edit</span><span>View</span><span>Tools</span></div>
+    <div className="folder-menu"><span>Downloads folder</span></div>
     <div className="folder-toolbar"><button onClick={() => open('bytewire')}>Back to ByteWire</button><button disabled={!selected || blocked(selected.id)} onClick={event => { if (selected) actions.openFile(selected.id, false, event.currentTarget) }}>Open selected file</button><button disabled={!selected} onClick={event => { if (selected) actions.inspect(selected.id, event.currentTarget) }}>Properties</button></div>
     <div className="folder-address"><span>Address</span><strong>C:\Downloads</strong></div>
     <div className="folder-intro"><h1>Downloads</h1><p>Completed ByteWire transfers appear here. Select a file and choose Open, or double-click its name.</p><label><input type="checkbox" checked={extensions} onChange={event => setExtensions(event.target.checked)} /> Show filename extensions</label></div>

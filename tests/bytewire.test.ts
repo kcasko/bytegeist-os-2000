@@ -2,15 +2,15 @@ import { expect, it } from 'vitest'
 import { byteWireReducer as reduce, initialByteWire as initial, searchFiles } from '../src/apps/ByteWire/model'
 const start = () => reduce(initial, { type: 'begin' })
 const queue = () => reduce(start(), { type: 'download', id: 'song' })
-const finish = (state: ReturnType<typeof queue>) => Array.from({ length: 4 }).reduce<typeof state>(value => reduce(value, { type: 'tick' }), state)
+const finish = (state: ReturnType<typeof queue>) => Array.from({ length: 10 }).reduce<typeof state>(value => reduce(value, { type: 'tick' }), state)
 const download = () => finish(queue())
 it('progresses a transfer before exposing a completed downloadable file', () => {
   const queued = queue()
   expect(queued.progress.song).toBe(0)
   expect(reduce(queued, { type: 'inspect', id: 'song' }).inspected).toEqual([])
-  const halfway = reduce(reduce(queued, { type: 'tick' }), { type: 'tick' })
+  const halfway = Array.from({ length: 5 }).reduce<typeof queued>(value => reduce(value, { type: 'tick' }), queued)
   expect(halfway.progress.song).toBe(50)
-  const complete = reduce(reduce(halfway, { type: 'tick' }), { type: 'tick' })
+  const complete = finish(halfway)
   expect(complete.progress.song).toBe(100)
   expect(reduce(complete, { type: 'tick' }).progress.song).toBe(100)
 })
@@ -45,4 +45,10 @@ it('awards prevention only after inspecting the suspicious downloaded file', () 
 it('reset clears progress and exit also revokes consent', () => {
   expect(reduce(download(), { type: 'reset' })).toEqual({ ...initial, consent: true })
   expect(reduce(download(), { type: 'exit' })).toEqual(initial)
+})
+
+it('explains duplicate downloads and search outcomes instead of silently doing nothing', () => {
+  expect(reduce(download(), { type: 'download', id: 'song' }).notice).toContain('Already downloaded')
+  expect(reduce(queue(), { type: 'download', id: 'song' }).notice).toContain('already downloading')
+  expect(reduce(start(), { type: 'search', query: 'nonsense' }).notice).toContain('0 files found')
 })

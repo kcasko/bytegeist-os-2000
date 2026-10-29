@@ -28,3 +28,15 @@ Definition of done: acceptance met, relevant automated checks green, limitations
 | BG-205 | P1 | Select/double-click/drag shortcuts; desktop/window/taskbar menus; 8-edge resizing; stable task order and Show Desktop | Verified locally: RC5 |
 | BG-206 | P1 | Run whitelist, session Notepad, applied display preferences, calendar, virtual shutdown/restart | Verified locally: RC5 |
 | BG-207 | P1 | Shared staged reboot for Start and recovery; skip; preserved startup/files/notes; reinfection only after sign-in | Verified locally: RC5 |
+
+## QA follow-up
+
+| ID | Priority | Acceptance | Status |
+| --- | --- | --- | --- |
+| BG-208 | P0 | Recovery feedback beside controls, visible scan phase, accurate state/event text, uncovered process details | Verified locally: RC6 |
+| BG-209 | P0 | Human-paced transfers, stable Cancel, whole-row selection, duplicate feedback, visible new transfers | Verified locally: RC6 |
+| BG-210 | P0 | Recover preferred window sizing after rotation/tiny startup; usable Start footer; dark caption glyphs | Verified locally: RC6 |
+| BG-211 | P0 | Explicit Skills and readable initial HTML; mobile tap regression | Verified locally: RC6 |
+| BG-212 | P1 | Confirmation before reset/unsaved edits, Run input/launch behavior, Display OK/Cancel | Verified locally: RC6 |
+
+See RC6_QA_FOLLOWUP.md for finding-by-finding outcomes and deliberate limits.

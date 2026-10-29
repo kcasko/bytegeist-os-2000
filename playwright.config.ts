@@ -2,7 +2,9 @@ import { defineConfig } from '@playwright/test'
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
-  workers: 6,
+  timeout: 45000,
+  expect: { timeout: 8000 },
+  workers: 3,
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' } },
     { name: 'firefox', use: { browserName: 'firefox' } },

@@ -33,6 +33,7 @@ for (const width of [320, 390, 768, 1440]) {
     await scanner.getByRole('button', { name: 'Inspect suspicious file', exact: true }).click()
     await scanner.getByRole('button', { name: 'Quarantine executable', exact: true }).click()
     await scanner.getByRole('button', { name: 'Run verification scan', exact: true }).click()
+    await expect(scanner.getByRole('button', { name: 'Run verification scan', exact: true })).toBeEnabled()
     await scanner.getByRole('button', { name: 'Simulate reboot', exact: true }).click()
     const report = page.getByRole('dialog', { name: 'Incident Report', exact: true })
     await expect(report.getByRole('heading', { name: 'I Survived LimeWire.' })).toBeVisible({ timeout: 8000 })
@@ -105,6 +106,7 @@ test('global reset discards pending execution confirmation', async ({ page }) =>
   await page.getByRole('button', { name: 'Properties: this-is-a-song.mp3', exact: true }).click()
   await page.getByRole('button', { name: 'Open file', exact: true }).click()
   await page.getByRole('button', { name: 'Reset incident', exact: true }).click()
+  await page.getByRole('alertdialog', { name: 'Reset incident?' }).getByRole('button', { name: 'Reset', exact: true }).click()
   await expect(page.getByRole('button', { name: 'Run (simulated)', exact: true })).toHaveCount(0)
 })
 

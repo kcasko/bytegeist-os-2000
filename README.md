@@ -91,3 +91,11 @@ Drag window titles and any edge/corner to move and resize. Double-click a title 
 Start includes Run, Notepad, Display Properties and Shut Down. Run recognizes the programs listed in its help. Notepad saves within the current tab session; saved text survives a virtual restart. Unsaved text is discarded on shutdown/restart after the visible warning. Refresh clears session storage. Clock opens a working month calendar.
 
 Restart performs shutdown, black screen, BIOS-style checks, branded loading and sign-in before opening the desktop. Skip startup finishes the same boot immediately. ByteDefender uses this same sequence. Downloads, saved notes and startup configuration survive; unfinished transfers cancel, windows close, and enabled malware startup reinfects at sign-in. No sound or long first-visit boot blocks portfolio navigation.
+
+## QA follow-up behavior
+
+Transfers now last approximately five seconds and retain separate Cancel/Properties controls. Search rows select across their full width. New transfers scroll into view, and repeat downloads explain their current state. Reset asks before clearing progress.
+
+The initial HTML contains a readable portfolio fallback for JavaScript-disabled visitors. Skills is explicitly named. Run focuses its input and closes after launching a known program; unknown names, including inherited object keys, stay errors. Display Properties supports OK, Apply and Cancel. Notepad prompts before discarding unsaved edits.
+
+Windows remember preferred dimensions when the viewport temporarily shrinks. Start keeps Run and Shut Down in its pinned footer. Scanner feedback appears beside its actions and scanning has a brief visible phase. See docs/RC6_QA_FOLLOWUP.md for verification and remaining limits.
