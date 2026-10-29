@@ -1,4 +1,4 @@
-export type AppId = 'welcome' | 'projects' | 'about' | 'skills' | 'bytewire' | 'downloads' | 'taskmanager' | 'startup' | 'defender' | 'events' | 'report' | 'infection' | 'run' | 'notepad' | 'display'
+export type AppId = 'welcome' | 'projects' | 'about' | 'skills' | 'bytewire' | 'downloads' | 'taskmanager' | 'startup' | 'defender' | 'events' | 'report' | 'infection' | 'run' | 'notepad' | 'display' | 'memories'
 export type Bounds = { width: number; height: number }
 export type DesktopWindow = { id: AppId; x: number; y: number; width: number; height: number; preferredX?: number; preferredY?: number; preferredWidth?: number; preferredHeight?: number; order: number; minimized: boolean; maximized: boolean }
 export type WindowState = { windows: DesktopWindow[]; active: AppId | null }
@@ -32,7 +32,7 @@ export function windowReducer(state: WindowState, action: WindowAction): WindowS
   const current = state.windows.find(w => w.id === action.id)
   if (action.type === 'open') {
     const order = Math.max(-1, ...state.windows.map(w => w.order)) + 1
-    const next = current ? { ...current, minimized: false } : clamp({ id: action.id, x: 180 + state.windows.length * 28, y: 56 + state.windows.length * 28, width: action.id === 'run' ? 440 : 640, height: action.id === 'run' ? 300 : 540, order, minimized: false, maximized: false }, action.bounds)
+    const next = current ? { ...current, minimized: false } : clamp({ id: action.id, x: 180 + state.windows.length * 28, y: 56 + state.windows.length * 28, width: action.id === 'run' ? 440 : 640, height: action.id === 'run' ? 300 : action.id === 'memories' ? 620 : 540, order, minimized: false, maximized: false }, action.bounds)
     return { windows: [...state.windows.filter(w => w.id !== action.id), next], active: action.id }
   }
   if (!current) return state

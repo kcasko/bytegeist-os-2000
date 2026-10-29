@@ -14,6 +14,7 @@ export const apps: { id: AppId; title: string; description: string; icon: 'compu
   { id: 'infection', title: 'Infection Activity', description: 'Fictional warnings and simulated CPU', icon: 'tools' },
   { id: 'notepad', title: 'Notepad', description: 'Notes.txt · session document', icon: 'document' },
   { id: 'display', title: 'Display Properties', description: 'Desktop background and colors', icon: 'tools' },
+  { id: 'memories', title: 'WebTV Memories', description: 'Interactive fun fact · Power on my first internet', icon: 'computer' },
   { id: 'run', title: 'Run', description: 'Open a simulated program by name', icon: 'computer' },
 ]
 export const getApp = (id: AppId) => apps.find(app => app.id === id)!

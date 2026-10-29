@@ -1,0 +1,42 @@
+.memories-app { padding:14px; background:#c4c3bb; min-height:100%; color:#1b2631; }
+.memory-hint { font:bold 10px/1.6 Tahoma,sans-serif; margin:0 0 12px; }
+.memory-tv { background:#303735; border:3px outset #737b75; border-radius:19px 19px 25px 25px; padding:12px 12px 0; box-shadow:inset 0 0 0 3px #171d1b,0 4px 0 #7c7e75; }
+.memory-screen { min-height:300px; background:#081c2b; color:#f2edcd; border:5px inset #181e1b; border-radius:38px / 20px; overflow:hidden; box-shadow:inset 0 0 25px #000; font:14px/1.6 Georgia,serif; }
+.memory-screen h1 { font: bold 25px/1.25 Georgia,serif; letter-spacing:0; margin:0 0 14px; }
+.memory-screen p { line-height:1.6; }
+.memory-screen button { background:#efdf87; color:#172b37; border-color:#fff6cc #716627 #716627 #fff6cc; font: bold 12px Tahoma,sans-serif; min-height:34px; padding:7px 13px; }
+.memory-screen button:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+.memory-screen small { display:block; font:10px/1.6 Tahoma,sans-serif; margin-top:15px; }
+.memory-power,.memory-loading,.memory-portal,.memory-today { padding:28px 23px; text-align:center; }
+.memory-tv-symbol { display:inline-block; font:bold 38px Georgia,serif; border:3px solid #698caf; border-radius:8px; padding:0 14px; margin-bottom:18px; color:#b8d7e6; }
+.memory-loading { background:radial-gradient(ellipse at 50% 25%,#285474,#061522 75%); }
+.memory-orbit { width:90px; height:90px; margin:0 auto 17px; border:2px solid #a3cad5; border-radius:50%; display:grid; place-items:center; box-shadow:0 0 0 8px #709bb930,0 0 0 18px #709bb913; }
+.memory-orbit span { font:bold italic 46px Georgia,serif; color:#e2d178; }
+.memory-loading progress { display:block; width:min(280px,100%); height:17px; accent-color:#e3c86e; margin:18px auto; }
+.memory-loading button { min-height:27px; background:#d4d0c8; color:#172b37; font-size:10px; }
+.memory-service-bar { display:flex; justify-content:space-between; flex-wrap:wrap; gap:5px; padding:8px 15px; background:#426675; color:#fff7ca; font:11px Tahoma,sans-serif; }
+.memory-homepage { padding:20px; text-align:center; background:#082753; color:#fff6bd; }
+.memory-homepage[data-theme=green] { background:#c4ff6c; color:#172a0e; }
+.memory-homepage[data-theme=pink] { background:#ffb2d3; color:#4c1030; }
+.memory-construction { font:bold 10px/1.5 'Courier New',monospace; border-block:3px dashed currentColor; padding:8px 0; }
+.memory-fact-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border:2px ridge #b8be8f; margin:17px 0; }
+.memory-fact-stats span { font:9px/1.5 Tahoma,sans-serif; padding:9px 5px; border-right:1px dotted currentColor; }
+.memory-fact-stats span:last-child { border:0; }
+.memory-fact-stats strong { display:block; font-size:12px; margin-top:6px; }
+.memory-palette { display:flex; gap:7px; flex-wrap:wrap; justify-content:center; }
+.memory-palette button[aria-pressed=true] { border:2px solid #0b1b2b; box-shadow:0 0 0 2px #f3dc7f; }
+.memory-counter { font:9px 'Courier New',monospace; margin:20px 0; }
+.memory-chat { padding:22px; background:#070f18; color:#d5edd6; font:13px/1.7 'Courier New',monospace; }
+.memory-chat h1 { color:#d8d08a; }
+.memory-chat strong { color:#98c8f5; }
+.memory-channel { padding:6px 9px; background:#163148; color:#c8e6fa; font-size:11px; }
+.memory-tv-bottom { display:flex; align-items:center; justify-content:space-between; gap:7px; padding:11px 5px; font:8px Tahoma,sans-serif; color:#e6e7d9; }
+.memory-led { width:7px; height:7px; border-radius:50%; background:#69635d; }
+.memory-led-on { background:#b1d984; box-shadow:0 0 4px #b1d984; }
+.memory-remote { margin:16px auto 0; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:7px; background:#3e494e; color:#e7ecea; padding:11px; border:2px outset #7b8687; border-radius:13px; }
+.memory-remote>span { font:8px Tahoma,sans-serif; letter-spacing:1px; }
+.memory-remote button { color:#16232c; background:#e6e6d9; min-height:32px; font-size:11px; }
+.memory-remote button:disabled { color:#657078; background:#c5cac7; cursor:default; }
+.memory-remote button[aria-pressed=true] { background:#f0dc7d; border-color:#635c35 #faf2b4 #faf2b4 #635c35; }
+.memory-exit-hint { font:10px/1.6 Tahoma,sans-serif; margin-bottom:0; }
+@media(max-width:440px) { .memories-app { padding:10px; } .memory-tv { padding:8px 8px 0; } .memory-screen { border-radius:24px / 15px; } .memory-screen h1 { font-size:22px; } .memory-power,.memory-loading,.memory-portal,.memory-today,.memory-homepage,.memory-chat { padding:20px 13px; } .memory-fact-stats { grid-template-columns:1fr; } .memory-fact-stats span { border-right:0; border-bottom:1px dotted currentColor; } }

@@ -40,3 +40,9 @@ Definition of done: acceptance met, relevant automated checks green, limitations
 | BG-212 | P1 | Confirmation before reset/unsaved edits, Run input/launch behavior, Display OK/Cancel | Verified locally: RC6 |
 
 See RC6_QA_FOLLOWUP.md for finding-by-finding outcomes and deliberate limits.
+
+## Interactive fun fact
+
+| ID | Priority | Acceptance | Status |
+| --- | --- | --- | --- |
+| BG-213 | P0 | Interactive personal fun fact: visible WebTV entry, connect/loading, reveal, palette controls, story remote, reduced motion, navigation preservation | Verified locally |

@@ -99,3 +99,7 @@ Transfers now last approximately five seconds and retain separate Cancel/Propert
 The initial HTML contains a readable portfolio fallback for JavaScript-disabled visitors. Skills is explicitly named. Run focuses its input and closes after launching a known program; unknown names, including inherited object keys, stay errors. Display Properties supports OK, Apply and Cancel. Notepad prompts before discarding unsaved edits.
 
 Windows remember preferred dimensions when the viewport temporarily shrinks. Start keeps Run and Shut Down in its pinned footer. Scanner feedback appears beside its actions and scanning has a brief visible phase. See docs/RC6_QA_FOLLOWUP.md for verification and remaining limits.
+
+## Interactive fun fact
+
+Choose Welcome → Interactive fun fact → Connect, or open WebTV Memories from the desktop/Start. Power on a TV-style connection screen to discover that Keith built his first HTML websites on WebTV. Change the homemade page's colors and use the remote to explore Talk City, mIRC and his career change. This optional feature has Skip, power-off and normal window controls; it never blocks portfolio navigation. See docs/INTERACTIVE_FUN_FACT.md.

@@ -26,7 +26,7 @@ export function Window({ win, active, focusRequest, zIndex, dispatch, bounds, ch
   }, [active, focusRequest])
   const showMenu = (x: number, y: number) => { dispatch({ type: 'focus', id: win.id }); setMenu({ x, y }) }
   const setRect = (x: number, y: number, width: number, height: number) => dispatch({ type: 'resize-window', id: win.id, x, y, width, height, bounds: bounds() })
-  return <section ref={panel} role="dialog" aria-label={app.title} tabIndex={-1}
+  return <section ref={panel} role="dialog" aria-label={app.title} tabIndex={-1} data-window-active={active}
     className={`${styles.window} ${active ? styles.active : ''} ${win.maximized ? styles.maximized : ''}`}
     style={{ left: win.x, top: win.y, width: win.width, height: win.height, zIndex }}
     onKeyDown={event => { if (event.altKey && event.key === ' ') { event.preventDefault(); event.stopPropagation(); const box = panel.current!.getBoundingClientRect(); showMenu(box.x + 5, box.y + 30) } }}

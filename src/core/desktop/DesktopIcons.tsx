@@ -5,7 +5,7 @@ import type { AppId, Bounds } from '../windows/windowReducer'
 import { ContextMenu } from './ContextMenu'
 type Position = { x: number; y: number }
 export function DesktopIcons({ open, bounds }: { open: (id: AppId) => void; bounds: () => Bounds }) {
-  const shortcuts = apps.slice(0, 6)
+  const shortcuts = apps.filter((app, index) => index < 6 || app.id === 'memories')
   const [selected, setSelected] = useState<AppId | null>(null)
   const [positions, setPositions] = useState<Partial<Record<AppId, Position>>>({})
   const [menu, setMenu] = useState<{ id: AppId; x: number; y: number } | null>(null)
