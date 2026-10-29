@@ -207,3 +207,18 @@ test('third warning sits on the left without adding a popup scrollbar', async ({
   expect(await warnings.evaluate(el => getComputedStyle(el).overflowY)).toBe('visible')
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth && document.documentElement.scrollHeight <= innerHeight)).toBe(true)
 })
+
+test('short desktop screens retain three separate warning windows', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 650 })
+  await page.clock.install()
+  await infect(page)
+  await page.clock.runFor(8000)
+  const warnings = page.getByRole('complementary', { name: 'Fictional malware warning' })
+  await expect(warnings.getByRole('dialog')).toHaveCount(3)
+  for (const title of ['ByteGuard 2000 warning', 'Messenger Service warning', 'ByteWire Helper warning']) {
+    const popup = warnings.getByRole('dialog', { name: title, exact: true })
+    await expect(popup).toBeInViewport()
+    await expect(popup.getByRole('button', { name: 'Investigate process', exact: true })).toBeInViewport()
+  }
+  await expect(page.getByRole('button', { name: 'View infection activity', exact: true })).toHaveCount(0)
+})

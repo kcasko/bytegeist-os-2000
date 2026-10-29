@@ -40,5 +40,7 @@
 @media (max-width: 640px) { .system-tray:has(.infection-tray-button) time { display: none; } .infection-tray-button { min-height: 26px; } }
 .task-process-actions { position: sticky; bottom: 0; padding: 9px; margin: 12px -9px; background: #d4d0c8; border: 1px outset #eee; box-shadow: 0 -2px #f7f7ef; z-index: 1; }
 .infection-popup footer.investigation-confirmed { background: #dcebd5; border-top: 2px solid #426d31; } .infection-popup .investigation-confirmed small { color: #27451d; font-weight: bold; }
-@media (max-height: 719px) { .desktop.simulation-active.infected { height: calc(100dvh - 132px); } .rogue-shortcut { display: none; } }
-@media (max-height: 719px) { .simulation-active.infected .calendar-popup { bottom: 132px; } }
+
+
+
+@media (max-height: 719px) { .infection-popup { margin-block: 7px; } .infection-popup-body { padding: 7px 9px 2px; } .infection-popup footer { padding: 4px 9px 7px; gap: 4px; } .infection-popup p { margin-block: 3px; } .infection-caption { padding: 4px; margin-block: 5px; } }
