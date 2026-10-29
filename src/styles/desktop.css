@@ -1,0 +1,90 @@
+:root { font-family: Tahoma, Verdana, Arial, sans-serif; font-size: 12px; color: #202426; --face: #d4d0c8; --navy: #08285d; font-synthesis: none; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; color: inherit; cursor: pointer; background: var(--face); border: 1px solid; border-color: #fff #404040 #404040 #fff; box-shadow: inset -1px -1px #888; padding: 5px 10px; border-radius: 0; }
+button:active, .pressed { border-color: #484848 #fff #fff #484848; box-shadow: inset 1px 1px #888; }
+button:focus-visible, a:focus-visible { outline: 2px dotted #0646a0; outline-offset: -4px; }
+a { color: #053b8c; text-underline-offset: 3px; }
+p { line-height: 1.65; }
+h1 { font-size: 25px; letter-spacing: -.7px; margin: 0 0 14px; }
+h2 { font-size: 15px; margin: 0 0 8px; }
+small { font-size: 10px; }
+.desktop { height: calc(100dvh - 44px); min-height: 200px; position: relative; overflow: hidden; background: #163c60; }
+.wallpaper { position: absolute; right: 7%; top: 40%; color: #9bb5cb; opacity: .37; text-align: right; pointer-events: none; }
+.wallpaper-symbol { font: italic bold 115px Georgia, serif; line-height: .85; letter-spacing: -15px; }
+.wallpaper-symbol span { font: 18px Arial; letter-spacing: 0; vertical-align: top; margin: 15px; }
+.wallpaper-name { font-size: 37px; letter-spacing: -2px; margin-top: 22px; font-weight: bold; }
+.wallpaper-name span { font-size: 24px; font-weight: normal; margin-left: 10px; }
+.wallpaper p { letter-spacing: 5px; font-size: 10px; }
+.wallpaper-rule { border-top: 1px solid; width: 380px; margin-left: auto; }
+.desktop-icons { position: absolute; left: 12px; top: 15px; display: grid; gap: 12px; width: 88px; }
+.desktop-icons button { background: none; border: 1px solid transparent; box-shadow: none; color: #fff; display: flex; align-items: center; flex-direction: column; gap: 8px; padding: 6px 2px; text-shadow: 1px 1px #000; }
+.desktop-icons button:hover, .desktop-icons button:focus-visible { background: #295d86; border: 1px dotted #c3d1da; outline: none; }
+.desktop-icons button span:last-child { line-height: 1.4; }
+.desktop-build { position: absolute; bottom: 14px; right: 18px; text-align: right; color: #a2b5c5; font: 10px/1.7 'Courier New', monospace; }
+.pixel-icon { width: 36px; height: 34px; display: inline-block; position: relative; flex-shrink: 0; filter: drop-shadow(1px 2px 0 #0005); }
+.icon-computer::before { content: ''; position: absolute; inset: 1px 2px 9px; background: #214c6f; border: 4px solid #cecfcd; box-shadow: inset 1px 1px #121f2d, 1px 1px #252c34; }
+.icon-computer::after { content: ''; position: absolute; width: 28px; height: 7px; bottom: 1px; left: 4px; background: #c8c9c4; border: 2px outset #e7e8e3; }
+.icon-computer span { position: absolute; width: 12px; height: 3px; background: #a1e2ce; left: 9px; top: 11px; z-index: 1; box-shadow: 0 5px #4d8fb1; }
+.icon-folder::before { content: ''; position: absolute; left: 2px; top: 7px; width: 16px; height: 8px; background: #ead08a; border: 1px solid #735928; }
+.icon-folder::after { content: ''; position: absolute; inset: 12px 0 3px; background: #efcf72; border: 2px solid; border-color: #fff0b0 #936b26 #936b26 #fff0b0; transform: skew(-7deg); }
+.icon-person::before { content: ''; position: absolute; width: 15px; height: 15px; left: 11px; top: 0; background: #e0bc91; border: 2px solid #755c42; box-shadow: inset 0 4px #6b5140; }
+.icon-person::after { content: ''; position: absolute; left: 4px; bottom: 1px; width: 29px; height: 18px; border: 2px outset #b5d4e6; background: #4c7da2; }
+.icon-tools::before { content: ''; position: absolute; inset: 3px 2px; background: #d2d3cd; border: 2px outset #e9eae3; }
+.icon-tools::after { content: '⚙'; position: absolute; color: #355c7b; font: bold 29px/32px Arial; left: 4px; top: 1px; }
+.icon-wire::before { content: ''; position: absolute; width: 27px; height: 27px; border-radius: 50%; border: 3px solid #33623b; left: 5px; top: 3px; background: #91b94d; box-shadow: inset 2px 2px #d7ee92; }
+.icon-wire::after { content: 'b'; position: absolute; left: 12px; top: 0; color: #244b30; font: italic bold 29px Georgia; }
+.taskbar { height: 44px; background: var(--face); border-top: 2px solid #f9f9f9; position: fixed; bottom: 0; left: 0; right: 0; display: flex; align-items: center; padding: 3px; gap: 6px; z-index: 10000; }
+.start-button { height: 34px; display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: bold; padding: 3px 8px; }
+.start-logo { font: italic bold 23px Georgia; color: #0c3a68; }
+.taskbar-divider { height: 29px; width: 3px; border-left: 1px solid #888; border-right: 1px solid #fff; }
+.tasks { display: flex; gap: 4px; flex: 1; min-width: 0; overflow-x: auto; }
+.tasks button { width: 155px; min-width: 80px; height: 33px; display: flex; align-items: center; gap: 3px; padding: 2px 5px; text-align: left; }
+.tasks button span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tasks .pixel-icon { transform: scale(.5); width: 25px; height: 30px; transform-origin: left center; }
+.tasks .pressed { background: #e6e4de; font-weight: bold; }
+.system-tray { border: 1px inset #eee; padding: 7px 9px; display: flex; align-items: center; gap: 9px; white-space: nowrap; font-size: 11px; }
+.online-dot { width: 7px; height: 7px; background: #326a3e; border: 1px solid #164b29; }
+.tray-label { color: #555; font-size: 9px; }
+.start-menu { position: fixed; bottom: 44px; left: 3px; z-index: 10001; display: flex; background: var(--face); border: 2px outset #eee; padding: 3px; box-shadow: 3px 3px #0006; width: min(310px, 100vw); max-height: calc(100dvh - 44px); overflow: auto; }
+.start-rail { width: 33px; background: #183e6b; color: #c2d3dd; writing-mode: vertical-rl; transform: rotate(180deg); padding: 10px 6px; font-size: 21px; white-space: nowrap; }
+.start-items { flex: 1; min-width: 0; }
+.start-items>p { font-size: 9px; padding: 0 12px 8px; border-bottom: 1px solid #999; letter-spacing: 1px; }
+.start-items button { border: 0; box-shadow: none; display: flex; width: 100%; align-items: center; gap: 12px; text-align: left; padding: 12px; }
+.start-items button:hover, .start-items button:focus-visible { color: white; background: #113a73; outline: none; }
+.start-items strong, .start-items small { display: block; }
+.start-items small { margin-top: 5px; font-size: 10px; }
+.start-footer { border-top: 1px solid #999; margin: 6px 8px 0; padding: 12px 4px 7px; font-size: 10px; }
+.welcome-banner { padding: 25px 24px; display: flex; align-items: center; gap: 20px; background: #e9eced; border-bottom: 1px solid #afb9c0; }
+.brand-mark { background: #173e67; color: #e8ece8; border: 3px outset #7c98ad; font: italic bold 43px Georgia; letter-spacing: -5px; width: 70px; height: 65px; padding: 2px 8px; flex-shrink: 0; }
+.welcome-banner small { font-size: 9px; letter-spacing: 2px; color: #4c6376; }
+.welcome-banner h1 { color: #113c68; margin: 8px 0 4px; font-size: 30px; }
+.welcome-banner h1 span { font-weight: normal; font-size: 23px; }
+.welcome-banner p { color: #556573; font-size: 11px; margin: 0; }
+.welcome-layout { display: grid; grid-template-columns: 170px 1fr; }
+.welcome-layout aside { padding: 24px 16px; background: #e7ebed; border-right: 1px solid #c7cfd4; color: #405970; }
+.welcome-layout aside p { font-size: 11px; }
+.welcome-layout aside>span { display: block; font-size: 10px; margin: 15px 0; }
+.system-stamp { font: 9px/1.9 'Courier New', monospace; border-top: 1px solid #bcc8cf; margin-top: 40px; padding-top: 12px; }
+.welcome-layout>div { padding: 24px 22px 16px; }
+.welcome-layout p { font-size: 11px; }
+.launch-list { display: grid; margin-top: 18px; gap: 6px; }
+.launch-list button { border: 1px solid transparent; box-shadow: none; background: transparent; display: flex; gap: 12px; text-align: left; align-items: center; padding: 10px 2px; }
+.launch-list button:hover { border-color: #bdc8cf; background: #e9eef0; }
+.launch-list small { display: block; font-size: 10px; margin-top: 5px; color: #555d65; }
+.launch-list b { margin-left: auto; color: #5b768d; font-size: 20px; }
+.tip { color: #5a6268; font-size: 10px !important; border-top: 1px solid #c9cdca; margin-top: 18px; padding-top: 10px; }
+.app-page { padding: 26px; }
+.eyebrow { font: 10px 'Courier New', monospace; color: #56718a; margin-bottom: 18px; }
+.project-list { display: grid; margin-top: 20px; }
+.project-list article { border-top: 1px solid #c5c9c8; display: flex; gap: 20px; padding: 18px 0; }
+.project-list small { color: #53677a; font: 9px 'Courier New', monospace; }
+.project-list h2 { margin-top: 7px; }
+fieldset { border: 2px groove #eee; margin: 24px 0; padding: 12px 16px; }
+legend { color: #264c72; }
+.skills-list { columns: 2; padding-left: 15px; line-height: 2.4; }
+.inset { border: 2px inset #eee; background: #e7ece3; padding: 16px; margin: 24px 0; }
+.bytewire h1 { color: #345c35; }
+@media (max-width: 640px) { .wallpaper { right: 15px; } .wallpaper-name { font-size: 27px; } .wallpaper-name span { font-size: 18px; } .wallpaper-rule { width: 230px; } .welcome-banner { padding: 18px 13px; gap: 12px; } .welcome-banner h1 { font-size: 25px; } .welcome-banner h1 span { font-size: 18px; } .welcome-banner small { letter-spacing: .5px; } .brand-mark { width: 52px; height: 50px; font-size: 33px; padding-left: 4px; } .welcome-layout { display: block; } .welcome-layout aside { display: none; } .welcome-layout>div { padding: 22px 16px; } .system-tray { padding: 8px 6px; } .tray-label, .online-dot { display: none; } .app-page { padding: 22px 16px; } .skills-list { columns: 1; } .desktop-build { max-width: 200px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
