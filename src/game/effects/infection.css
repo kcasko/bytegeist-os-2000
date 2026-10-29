@@ -39,3 +39,4 @@
 @media (max-width: 1279px) { .desktop.simulation-active.infected { height: calc(100dvh - 132px); } .rogue-shortcut { display: none; } }
 @media (max-width: 640px) { .system-tray:has(.infection-tray-button) time { display: none; } .infection-tray-button { min-height: 26px; } }
 .task-process-actions { position: sticky; bottom: 0; padding: 9px; margin: 12px -9px; background: #d4d0c8; border: 1px outset #eee; box-shadow: 0 -2px #f7f7ef; z-index: 1; }
+.infection-popup footer.investigation-confirmed { background: #dcebd5; border-top: 2px solid #426d31; } .infection-popup .investigation-confirmed small { color: #27451d; font-weight: bold; }
