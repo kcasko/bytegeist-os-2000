@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import type { Dispatch, ReactNode } from 'react'
 import type { Bounds, DesktopWindow, WindowAction } from './windowReducer'
 import { getApp } from '../system/AppRegistry'
@@ -18,8 +18,11 @@ export function Window({ win, active, focusRequest, zIndex, dispatch, bounds, ch
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null)
   const app = getApp(win.id)
   const dismissMenu = useCallback(() => { setMenu(null) }, [])
-  useEffect(() => {
-    if (active && !panel.current?.contains(document.activeElement)) panel.current?.focus({ preventScroll: true })
+  useLayoutEffect(() => {
+    if (active && !panel.current?.contains(document.activeElement)) {
+      const target = panel.current?.querySelector<HTMLElement>('[data-autofocus]') ?? panel.current
+      target?.focus({ preventScroll: true })
+    }
   }, [active, focusRequest])
   const showMenu = (x: number, y: number) => { dispatch({ type: 'focus', id: win.id }); setMenu({ x, y }) }
   const setRect = (x: number, y: number, width: number, height: number) => dispatch({ type: 'resize-window', id: win.id, x, y, width, height, bounds: bounds() })

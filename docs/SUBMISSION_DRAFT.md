@@ -23,3 +23,5 @@ The trickiest problems were honest recovery verification, small-screen window bo
 Planned service: AWS Amplify Hosting for the static dist build. The repository contains amplify.yml and Node 22 build selection. This draft does not claim that AWS deployment has happened.
 
 Required evidence to add: live URL, GitHub repository, Amplify app/build screenshot, deployment result, desktop/mobile screenshots, prevention/recovery screenshots, and any lessons from the actual AWS deployment.
+
+The infection popups deliberately interrupt the fictional desktop, reflecting the adware experience of that era. This happens only inside the opt-in game. Persistent Exit controls, Hide pop-ups, Start and the taskbar provide a route back to the portfolio.

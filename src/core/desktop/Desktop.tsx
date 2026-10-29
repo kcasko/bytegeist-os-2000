@@ -64,11 +64,17 @@ export function Desktop() {
     }
   }, [incident.state.stage, bounds])
   useEffect(() => {
-    const resize = () => dispatch({ type: 'resize', bounds: bounds() })
+    const desktop = desktopRef.current
+    if (!desktop) return
+    const resize = () => {
+      if (desktop.isConnected && desktop.clientWidth > 0 && desktop.clientHeight > 0) dispatch({ type: 'resize', bounds: { width: desktop.clientWidth, height: desktop.clientHeight } })
+    }
     resize()
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(resize)
+    observer?.observe(desktop)
     window.addEventListener('resize', resize)
-    return () => window.removeEventListener('resize', resize)
-  }, [bounds])
+    return () => { observer?.disconnect(); window.removeEventListener('resize', resize) }
+  }, [bounds, boot, poweredOff])
   const showDesktop = () => {
     const visible = state.windows.filter(win => !win.minimized)
     if (visible.length) { desktopSnapshot.current = visible.map(win => win.id); dispatch({ type: 'minimize-all' }); desktopRef.current?.focus() }

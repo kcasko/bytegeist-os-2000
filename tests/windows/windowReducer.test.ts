@@ -73,7 +73,7 @@ describe('desktop window lifecycle', () => {
 it('keeps preferred window size across a tiny viewport and rotation', () => {
   const tiny = reduce(initialState, { type: 'open', id: 'welcome', bounds: { width: 260, height: 176 } })
   const grown = reduce(tiny, { type: 'resize', bounds })
-  expect(grown.windows[0]).toMatchObject({ width: 640, height: 540 })
+  expect(grown.windows[0]).toMatchObject({ x: 180, y: 56, width: 640, height: 540 })
   const rotated = reduce(grown, { type: 'resize', bounds: { width: 844, height: 346 } })
   expect(rotated.windows[0].y + rotated.windows[0].height).toBeLessThanOrEqual(346)
   const restored = reduce(rotated, { type: 'resize', bounds })

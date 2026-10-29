@@ -25,7 +25,7 @@ export function byteWireReducer(state: ByteWireState, action: ByteWireAction): B
   if (!('id' in action)) return state
   const file = files.find(file => file.id === action.id)
   if (!file) return state
-  if (action.type === 'select') return { ...state, selected: action.id }
+  if (action.type === 'select') return { ...state, selected: action.id, notice: `Selected ${file.name}. ${isComplete(state, action.id) ? 'Already downloaded; open it from Transfers or Downloads.' : state.downloads.includes(action.id) ? 'Download in progress.' : 'Choose Download selected to start the transfer.'}` }
   if (action.type === 'download') return state.downloads.includes(action.id) ? { ...state, notice: isComplete(state, action.id) ? 'Already downloaded. Open it from Transfers or Downloads.' : 'This file is already downloading. Follow its progress in Transfers.' } : { ...state, selected: action.id, downloads: [...state.downloads, action.id], progress: { ...state.progress, [action.id]: 0 }, notice: 'Connecting to fictional peer…' }
   if (action.type === 'cancel' && !isComplete(state, action.id)) {
     const progress = { ...state.progress }

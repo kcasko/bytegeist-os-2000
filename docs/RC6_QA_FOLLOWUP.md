@@ -39,3 +39,17 @@ AWS deployment, GitHub publication, screenshots of real AWS resources, eligibili
 Fresh lint, strict types, 37 unit/component tests and production build pass. Six initial QA scenarios passed in Chromium; full expanded Chromium/Firefox/WebKit results will be recorded after completion. Independent source review caught and verified the Notepad save/reopen fix and identified the Run inherited-key bug, now fixed with a browser regression.
 
 Final production verification: **145 browser tests passed, 2 skipped, 0 failed** across Chromium, Firefox and WebKit (4.2 minutes). Both skips are Firefox's unsupported mobile emulation. All 37 unit/component tests, strict type checking, lint and the production build passed. Upper title-bar double-click was also checked directly in Chromium. Screenshots show the full Start menu and visible blocked scanner feedback.
+
+## Retest follow-up: growth and input focus
+
+The stuck width was not reproduced on the latest production preview using native Playwright viewport changes after explicitly waiting for Welcome to mount: both 260px and 390px startup grew to 640px. The window did remain at x=0 over desktop shortcuts. Preferred x/y coordinates are now preserved alongside preferred width/height, so temporary viewport constraints do not erase normal desktop placement.
+
+Desktop now observes the actual desktop element with ResizeObserver as well as listening for browser resize events. This covers embedded-panel/container resizing and gives layout changes a second independent path. The observer disconnects during virtual shutdown/boot and reattaches when the desktop returns. It does not repeatedly reset a manually chosen window size.
+
+The regression test now waits for the narrow initial window before widening. An additional test changes only the desktop container width, without resizing the browser, and verifies observer-driven growth from 390px to 1440px, including x=180, 640x540 dimensions and access to the Projects icon.
+
+Window focus now targets the intended input when Run or Notepad is opened or relaunched, while preserving focus already inside an active app. ByteWire selection updates its status instead of continuing to request a selection. About Keith names WGU once.
+
+Per Keith's clarification, deliberately intrusive, opt-in malware popups remain separate and retain their current positions. Exit/reset, Hide pop-ups, Start and taskbar remain available. No popup-layout change was made in this follow-up.
+
+Retest follow-up verification: 74 desktop/shell/QA browser tests passed across Chromium, Firefox and WebKit; one unsupported Firefox touch case skipped. Fresh lint, type checks, all 37 unit/component tests and production build passed. The strengthened 11-test window reducer suite also passed after adding the position assertion. Initial diagnostic testing stopped Firefox's own resize-event processing and blocked its automation handshake; the final observer test instead changes container width without interfering with browser internals. A WebKit initial-focus timing race was resolved by applying window focus before paint.
