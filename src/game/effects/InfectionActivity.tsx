@@ -1,0 +1,7 @@
+import { useIncident } from '../IncidentSession'
+import { warningMessages } from './warningMessages'
+import type { AppId } from '../../core/windows/windowReducer'
+export function InfectionActivity({ open }: { open: (id: AppId) => void }) {
+  const { state } = useIncident()
+  return <div className="app-page"><p className="eyebrow">FICTIONAL DESKTOP / INFECTION ACTIVITY</p><h1>{state.processRunning ? 'Your desktop has company.' : 'The rogue process is quiet.'}</h1><p>{state.processRunning ? 'songhelper.exe is generating fake warnings, changing the wallpaper, and pretending to consume CPU. These are symptoms inside ByteGeist OS only.' : 'No infection effects are active. If startup persistence remains, the next simulated reboot may bring them back.'}</p><div className="simulated-load"><strong>SIMULATED CPU: {state.processRunning ? '96%' : '3%'}</strong><progress aria-label="Simulated CPU usage" max={100} value={state.processRunning ? 96 : 3} /><p>This is scenario data, not a measurement of your device.</p></div>{warningMessages.map(warning => <section className="activity-warning" key={warning.title}><small>{state.processRunning ? 'ROGUE WARNING / FICTIONAL' : 'INACTIVE SYMPTOM'} · {warning.title}</small><h2>{warning.heading}</h2><p>{warning.body}</p></section>)}<p className="tip">Closing a warning hides a symptom. Ending songhelper.exe contains the process. Disabling its startup entry prevents the next relaunch.</p><button onClick={() => open('taskmanager')}>Investigate songhelper.exe</button></div>
+}

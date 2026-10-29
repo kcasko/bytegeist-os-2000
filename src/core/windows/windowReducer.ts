@@ -1,4 +1,4 @@
-export type AppId = 'welcome' | 'projects' | 'about' | 'skills' | 'bytewire' | 'taskmanager' | 'startup' | 'defender' | 'events' | 'report'
+export type AppId = 'welcome' | 'projects' | 'about' | 'skills' | 'bytewire' | 'taskmanager' | 'startup' | 'defender' | 'events' | 'report' | 'infection'
 export type Bounds = { width: number; height: number }
 export type DesktopWindow = { id: AppId; x: number; y: number; minimized: boolean; maximized: boolean }
 export type WindowState = { windows: DesktopWindow[]; active: AppId | null }

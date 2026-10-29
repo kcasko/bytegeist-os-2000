@@ -10,5 +10,6 @@ export const apps: { id: AppId; title: string; description: string; icon: 'compu
   { id: 'defender', title: 'ByteDefender', description: 'Quarantine, scan & verify recovery', icon: 'computer' },
   { id: 'events', title: 'Event Viewer', description: 'Read the incident timeline', icon: 'folder' },
   { id: 'report', title: 'Incident Report', description: 'Evidence, recovery & lessons learned', icon: 'folder' },
+  { id: 'infection', title: 'Infection Activity', description: 'Fictional warnings and simulated CPU', icon: 'tools' },
 ]
 export const getApp = (id: AppId) => apps.find(app => app.id === id)!

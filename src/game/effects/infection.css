@@ -1,0 +1,41 @@
+.desktop.infected { background: #292d3a; }
+.desktop.infected .wallpaper { color: #f0c574; }
+.hijack-label { display: block; margin-top: 16px; font: bold 11px/1.8 'Courier New', monospace; letter-spacing: 1px; }
+.rogue-shortcut { position: absolute; top: 20px; left: 110px; width: 92px; display: grid; justify-items: center; gap: 6px; padding: 5px; color: #fff0cc; background: transparent; border: 1px dotted #cbaa66; box-shadow: none; text-shadow: 1px 1px #000; z-index: 1; }
+.rogue-shortcut strong { font: bold 25px Georgia; background: #9b3027; color: white; border: 2px outset #e1af84; padding: 0 9px; }
+.rogue-shortcut small { font-size: 9px; line-height: 1.5; }
+.infection-effects { position: absolute; top: 14px; right: 15px; bottom: 14px; width: 310px; max-width: calc(100% - 30px); z-index: 2000; pointer-events: none; overflow-y: auto; padding: 3px 3px 3px 16px; }
+.infection-effects-tools { display: flex; justify-content: space-between; align-items: center; gap: 6px; background: #e2d9c1; padding: 5px; border: 1px solid #8a806c; pointer-events: auto; }
+.infection-effects-tools small { font: 8px 'Courier New', monospace; }
+.infection-effects-tools button { font-size: 9px; padding: 3px 5px; }
+.infection-popup { margin: 10px 0; background: #d4d0c8; border: 2px solid; border-color: #fff #37322d #37322d #fff; box-shadow: 3px 3px #0007; pointer-events: auto; }
+.infection-popup-1 { margin-left: -12px; margin-right: 10px; }
+.infection-popup-2 { margin-left: -5px; margin-right: 4px; }
+.infection-popup header { display: flex; gap: 6px; align-items: center; justify-content: space-between; color: white; background: #752c2c; padding: 3px 4px 3px 6px; font-size: 11px; }
+.infection-popup-1 header { background: #183d69; }
+.infection-popup-2 header { background: #735019; }
+.infection-popup header button { padding: 0 5px; font-size: 17px; font-weight: bold; line-height: 20px; }
+.infection-popup-body { display: flex; gap: 10px; padding: 12px 10px 4px; }
+.infection-error-symbol { flex-shrink: 0; width: 30px; height: 30px; border: 2px outset #e3a490; background: #963429; color: white; text-align: center; font: bold 24px Georgia; }
+.infection-popup-body small { color: #524b43; font: 8px/1.5 'Courier New', monospace; }
+.infection-popup h2 { font-size: 12px; margin: 6px 0; }
+.infection-popup p { font-size: 10px; line-height: 1.6; margin: 5px 0; }
+.infection-popup footer { padding: 6px 10px 10px; display: grid; gap: 7px; justify-items: end; }
+.infection-popup footer small { font-size: 8px; color: #4a473e; justify-self: start; }
+.infection-popup footer button { font-size: 10px; }
+.infection-caption { padding: 6px; color: #fff2cf; font-size: 10px; line-height: 1.6; background: #343b49; }
+.infection-strip { position: fixed; bottom: 88px; left: 0; right: 0; height: 44px; padding: 4px 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; background: #ead7ab; border: 2px outset #ffedcd; z-index: 10000; }
+.infection-strip strong { font: bold 9px 'Courier New', monospace; }
+.infection-strip small { display: block; font-size: 9px; margin-top: 3px; }
+.infection-strip button { font-size: 10px; padding: 4px 7px; min-height: 30px; }
+.infection-tray-button { font-size: 10px; padding: 2px 5px; background: #f0d5a2; border-color: #fff #6c4d2d #6c4d2d #fff; white-space: nowrap; }
+.infection-tray-button span { color: #6c271d; font-weight: bold; }
+.simulated-load { border: 2px inset #eee; background: #e7dec8; padding: 12px; margin: 18px 0; }
+.simulated-load strong { display: block; font: bold 19px 'Courier New', monospace; color: #632f24; }
+.simulated-load progress { width: 100%; height: 15px; accent-color: #a84529; margin: 8px 0; }
+.simulated-load p { margin: 0; font-size: 10px; }
+.activity-warning { border: 2px groove #eee; margin: 14px 0; padding: 12px; background: #eee6d7; }
+.activity-warning h2 { color: #752c2c; }
+@media (max-width: 1279px) { .desktop.simulation-active.infected { height: calc(100dvh - 132px); } .rogue-shortcut { display: none; } }
+@media (max-width: 640px) { .system-tray:has(.infection-tray-button) time { display: none; } .infection-tray-button { min-height: 26px; } }
+.task-process-actions { position: sticky; bottom: 0; padding: 9px; margin: 12px -9px; background: #d4d0c8; border: 1px outset #eee; box-shadow: 0 -2px #f7f7ef; z-index: 1; }

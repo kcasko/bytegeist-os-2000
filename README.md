@@ -31,6 +31,8 @@ Windows support pointer dragging, stacking, minimize/restore, maximize/restore a
 7. ByteDefender: inspect/quarantine the file, run a clean verification scan, then simulate reboot.
 8. The incident report opens with **I Survived LimeWire.**, evidence, timeline and a link to real troubleshooting work.
 
+During infection, up to three fictional warning windows return on a bounded timer. The wallpaper is hijacked, a rogue shortcut appears, and the tray/Task Manager show simulated high CPU. Small screens use a reserved activity strip instead of covering recovery controls. Hide pop-ups is available without pretending to remove the process.
+
 Ending the process alone does not remove persistence. Rebooting with an enabled startup entry and available executable causes reinfection. Global reset/exit controls remain available when game windows are closed. Portfolio windows stay open. Session progress is in memory only; refresh starts clean.
 
 All files, peers, scans, processes, reboots and warnings are synthetic. There are no actual downloads or execution, browser pop-ups, network searches, localStorage, credentials, analytics or device access.
@@ -43,7 +45,7 @@ npx playwright install chromium firefox webkit
 npm run test:e2e
 ```
 
-`check` runs lint, strict application TypeScript checking, 25 unit/component tests and production build. The browser suite defines 26 scenarios across Chromium, Firefox and WebKit: 77 passed, one unsupported Firefox mobile-emulation test skipped. Automated accessibility samples cover desktop, Start, skills, client, infection and recovery report. Touch emulation and reduced motion are exercised. Physical devices and screen-reader sessions remain manual checks.
+`check` runs lint, strict application TypeScript checking, 27 unit/component tests and production build. The browser suite defines 28 scenarios across Chromium, Firefox and WebKit: 83 passed, one unsupported Firefox mobile-emulation test skipped. Automated accessibility samples cover desktop, Start, skills, client, infection and recovery report. Touch emulation and reduced motion are exercised. Physical devices and screen-reader sessions remain manual checks.
 
 To test the production bundle:
 
@@ -59,7 +61,7 @@ $env:BYTEGEIST_TEST_URL='http://127.0.0.1:4180'
 npm run test:e2e
 ```
 
-The full 77-check cross-browser suite passed against the local production preview. Remote Linux CI is configured but has not run.
+The full 83-check cross-browser suite passed against the local production preview. Remote Linux CI is configured but has not run.
 
 ## Structure
 
