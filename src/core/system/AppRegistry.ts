@@ -5,5 +5,10 @@ export const apps: { id: AppId; title: string; description: string; icon: 'compu
   { id: 'about', title: 'About Keith', description: 'The person behind the keyboard', icon: 'person' },
   { id: 'skills', title: 'System Properties', description: 'Skills, tools & education', icon: 'tools' },
   { id: 'bytewire', title: 'ByteWire', description: 'Suspiciously good downloads', icon: 'wire' },
+  { id: 'taskmanager', title: 'Task Manager', description: 'Inspect and stop fictional processes', icon: 'tools' },
+  { id: 'startup', title: 'Startup Manager', description: 'Find what survives a reboot', icon: 'tools' },
+  { id: 'defender', title: 'ByteDefender', description: 'Quarantine, scan & verify recovery', icon: 'computer' },
+  { id: 'events', title: 'Event Viewer', description: 'Read the incident timeline', icon: 'folder' },
+  { id: 'report', title: 'Incident Report', description: 'Evidence, recovery & lessons learned', icon: 'folder' },
 ]
 export const getApp = (id: AppId) => apps.find(app => app.id === id)!

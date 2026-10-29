@@ -13,4 +13,3 @@ Not yet verified: physical touch hardware, screen-reader pass, Firefox/Safari, r
 
 
 Independent review reproduced two issues. Both regression tests failed before fixes: short-screen initial clipping, and keyboard focus loss when relaunching an active app. Fixed vertical clamping and explicit launch focus requests; full suite rerun passed: 9/9 Vitest and 10/10 Chromium, lint, strict typecheck and production build.
-
