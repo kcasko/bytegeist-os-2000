@@ -29,7 +29,7 @@ Windows support pointer dragging, stacking, minimize/restore, maximize/restore a
 5. Task Manager: inspect and end songhelper.exe.
 6. Startup Manager: inspect and disable ByteWire Helper.
 7. ByteDefender: inspect/quarantine the file, run a clean verification scan, then simulate reboot.
-8. The incident report opens with **I Survived LimeWire.**, evidence, timeline and a link to real troubleshooting work.
+8. The incident report opens with **I Survived ByteWire.**, evidence, timeline and a link to real troubleshooting work.
 
 During infection, up to three fictional warning windows return on a bounded timer. The wallpaper is hijacked, a rogue shortcut appears, and the tray/Task Manager show simulated high CPU. Small screens use a reserved activity strip instead of covering recovery controls. Hide pop-ups is available without pretending to remove the process.
 
