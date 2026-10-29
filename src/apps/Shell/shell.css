@@ -35,6 +35,9 @@
 .powered-off { height: 100dvh; background: #080b0c; color: #dfb66b; display: grid; place-content: center; text-align: center; gap: 20px; padding: 25px; font-family: Tahoma,sans-serif; }
 .powered-off h1 { font-size: 25px; }
 .powered-off p { font-size: 13px; }
+.powered-off button { color: #111; background: #d4d0c8; padding: 10px 24px; font-weight: bold; }
+.powered-off button:hover { background: #eeeae2; }
+.powered-off button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
 .simulation-active .calendar-popup { bottom: 88px; }
 
 .boot-screen { position: fixed; inset: 0; z-index: 20000; background: #000; color: #eee; display: grid; place-items: center; font-family: Tahoma,sans-serif; }
