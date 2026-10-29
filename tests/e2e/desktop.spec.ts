@@ -63,7 +63,7 @@ for (const width of [320, 375, 390, 768, 1440]) {
     expect(box.x + box.width).toBeLessThanOrEqual(width)
     await expect(page.getByRole('button', { name: 'Close Welcome', exact: true })).toBeInViewport()
     await page.getByRole('button', { name: 'Open ByteWire' }).click()
-    await expect(page.getByText('Preview only. No downloads or simulation are active.')).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Enter Simulation', exact: true })).toBeVisible()
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width)
   })
 }

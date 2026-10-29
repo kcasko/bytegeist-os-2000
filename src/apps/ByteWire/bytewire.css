@@ -1,0 +1,51 @@
+.bw { color: #253126; background: #f4f5ed; min-height: 100%; }
+.bw-consent { padding: 25px; }
+.bw-brand { display: flex; align-items: center; gap: 18px; padding-bottom: 20px; border-bottom: 1px solid #a6b4a0; }
+.bw-brand>span { font: italic bold 52px Georgia; color: #2b542e; background: #afd064; border: 3px outset #d2e79a; width: 65px; height: 65px; text-align: center; border-radius: 50%; }
+.bw-brand h1 { color: #355932; margin: 0; font-size: 33px; }
+.bw-brand p { margin: 4px 0 0; color: #58644f; }
+.bw-kicker { font: 9px 'Courier New', monospace; letter-spacing: 1.5px; margin: 25px 0 16px; color: #587047; }
+.bw-primary { font-weight: bold; padding: 10px 22px; }
+.bw-toolbar { position: sticky; top: 0; z-index: 2; background: #dfe6ce; border-bottom: 1px solid #9ba68e; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.bw-toolbar strong { color: #365d2e; font: italic bold 23px Georgia; display: block; }
+.bw-toolbar small { font: 8px 'Courier New', monospace; letter-spacing: 1px; }
+.bw-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.bw-actions button { font-size: 10px; min-height: 28px; }
+.bw-connection { background: #edf0e3; font-size: 10px; padding: 7px 12px; border-bottom: 1px solid #c6cdbb; }
+.bw-connection span { color: #437d36; margin-right: 5px; }
+.bw-search { padding: 14px 12px; }
+.bw-search label { display: block; font-weight: bold; font-size: 11px; margin-bottom: 6px; }
+.bw-search>div { display: flex; gap: 6px; }
+.bw-search input { min-width: 0; width: 100%; font: inherit; padding: 7px; border: 2px inset #eee; border-radius: 0; background: #fff; }
+.bw-search input:focus-visible { outline: 2px solid #3c6636; outline-offset: 1px; }
+.bw-section-title { background: #dfe4d4; border-block: 1px solid #bdc5b3; font-size: 9px; font-weight: bold; letter-spacing: .6px; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.bw-section-title span { color: #5d6755; font-weight: normal; letter-spacing: 0; }
+.bw-table-wrap { overflow-x: auto; }
+.bw table { width: 100%; border-collapse: collapse; background: white; font-size: 10px; }
+.bw th { background: #ecece5; border: 1px solid #c5c7be; text-align: left; padding: 6px 8px; font-weight: normal; }
+.bw td { padding: 3px 8px; border-bottom: 1px solid #eceee6; white-space: nowrap; }
+.bw td button { background: transparent; box-shadow: none; border: 0; padding: 7px 0; text-align: left; color: inherit; font-size: 11px; }
+.bw td button:focus-visible { outline-offset: 1px; }
+.bw-selected { background: #244e35; color: white; }
+.bw-result-actions { padding: 10px 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; border-top: 1px solid #c5c7be; }
+.bw button:disabled { color: #777; cursor: default; }
+.bw-result-actions small { font-size: 9px; color: #58634f; }
+.bw-empty { padding: 16px 12px; color: #65715d; font-size: 11px; margin: 0; }
+.bw-downloads { margin: 0; padding: 0; list-style: none; }
+.bw-downloads li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px; border-bottom: 1px solid #d4d9c9; }
+.bw-downloads li>span { min-width: 0; overflow-wrap: anywhere; }
+.bw-downloads strong { font-size: 11px; }
+.bw-downloads small { display: block; color: #50634c; margin-top: 5px; font-size: 9px; }
+.bw-properties { margin: 14px 12px; border: 2px groove #eee; background: #f5f4ec; padding: 0 12px 12px; }
+.bw-properties .bw-section-title { margin: 0 -12px; }
+.bw-properties .bw-section-title button { padding: 0 6px; font-size: 15px; }
+.bw-properties dl { display: grid; grid-template-columns: 100px minmax(0, 1fr); font-size: 11px; gap: 10px; }
+.bw-properties dt { color: #626b5c; }
+.bw-properties dd { margin: 0; overflow-wrap: anywhere; font-weight: bold; }
+.bw-properties p { font-size: 11px; }
+.bw-notice { margin: 0; padding: 10px 12px; font-size: 10px; color: #516249; }
+.bw-achievement { margin: 8px 12px 18px; border: 2px outset #c6d79b; padding: 16px; background: #e5edcf; }
+.bw-achievement small { letter-spacing: 1px; color: #4b6335; font: 9px 'Courier New', monospace; }
+.bw-achievement h2 { margin-top: 10px; font: bold 20px Georgia; color: #2d532b; }
+.bw-achievement p { font-size: 11px; }
+@media (max-width: 640px) { .bw-consent { padding: 20px 16px; } .bw-actions button { min-height: 32px; } .bw-properties dl { grid-template-columns: 82px minmax(0, 1fr); } .bw-result-actions button { width: 100%; } }

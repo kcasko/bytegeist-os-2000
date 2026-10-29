@@ -6,8 +6,10 @@ The pure reducer returns new arrays/objects and never mutates input. Array order
 
 CSS variables define shared gray/blue controls; Window.module.css encapsulates frame styling. Icons are original CSS shapes. The blue title-bar gradient follows the period reference. No external fonts, image requests or runtime services.
 
-Future game state belongs in src/game/engine, separate from Desktop state. Only typed user-triggered actions should transition incident stages. ByteWire is currently a static preview. No persistence, actual file downloads, real scanner or external system access.
+Future game state belongs in src/game/engine, separate from Desktop state. Only typed user-triggered actions should transition incident stages. ByteWire implements the consent-based prevention chapter; infection/recovery is still pending. No persistence, actual file downloads, real scanner or external system access.
 
 Decisions: single-click desktop launch for mouse/touch/keyboard consistency; one instance per app; native buttons and navigation rather than pretending to implement a complete operating system accessibility model. Dialogs are non-modal. Narrow viewports fill the available workspace. No window resizing handles in Sprint 0; maximize/restore are supported.
 
 Release is a static dist build. amplify.yml is preparatory and has not been used against AWS. No router or server rewrite is needed yet. CI configuration exists, but remote CI execution awaits a repository remote/push.
+
+BG-102: App owns an independent ByteWire reducer through ByteWireSession context, above the desktop/window lifecycle. Typed synthetic files feed local search. Consent and download/inspection prerequisites are enforced in the pure reducer. ByteWire renders a green client, simulated transfer queue, Properties, and prevention result. Reset keeps consent; Exit clears all session data and revokes consent. No storage, network or file APIs are used. The infection/recovery reducer remains future work.

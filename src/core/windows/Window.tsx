@@ -47,6 +47,6 @@ export function Window({ win, active, focusRequest, zIndex, dispatch, bounds, ch
     </div>
     <div className={styles.menu}><span>ByteGeist OS 2000</span><span>{app.title}</span></div>
     <div className={styles.content}>{children}</div>
-    <footer className={styles.status}><span>{win.id === 'bytewire' ? 'Preview · Simulation not active' : 'Ready'}</span><span>ByteGeist OS 2000</span></footer>
+    <footer className={styles.status}><span>{win.id === 'bytewire' ? 'Fictional files · No actual downloads' : 'Ready'}</span><span>ByteGeist OS 2000</span></footer>
   </section>
 }

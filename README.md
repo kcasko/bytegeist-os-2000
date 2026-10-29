@@ -20,7 +20,7 @@ Open the localhost URL Vite prints. No AWS account or environment secrets requir
 - Singleton windows with stacking/focus, pointer and touch dragging, minimize/restore, maximize/restore and close.
 - Keyboard: Tab through controls, Enter/Space activate, Start arrows navigate, Escape dismisses Start. Focus a window title's Move button and use arrows to move by 16 pixels (Shift: 64). Double-click title to maximize.
 - Welcome, Projects, About and System Properties; typed portfolio content.
-- ByteWire preview. P2P interactions and the optional fake malware game are NOT implemented yet.
+- ByteWire simulated search, transfer list, file Properties and inspection-gated prevention achievement, with explicit opt-in, reset and Exit Simulation. Infection/recovery gameplay is next.
 - Compact viewport windows fill the workspace; larger windows are bounded after viewport resize.
 
 ## Verification
@@ -31,7 +31,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-`check` runs lint, strict TypeScript checking, 9 Vitest unit/component tests and a production build. 10 Playwright browser tests exercise window lifecycle and screen widths 320, 375, 390, 768 and 1440. CI repeats these on Linux; the remote workflow has not run yet.
+`check` runs lint, strict TypeScript checking, 15 Vitest unit/component tests and a production build. 14 Playwright browser tests exercise window lifecycle and screen widths 320, 375, 390, 768 and 1440. CI repeats these on Linux; the remote workflow has not run yet.
 
 ## Structure
 
@@ -44,11 +44,10 @@ npm run test:e2e
 - tests: reducer, component and Chromium browser tests
 - docs: brief, architecture, backlog, implementation plan and evidence
 
-Window state is intentionally separate from future game state. No persistent state or real downloads exist in this foundation. Refresh opens a clean Welcome window.
+Window state is intentionally separate from future game state. ByteWire progress survives minimize/close in memory. Exit Simulation clears it; refresh starts clean. No real files are downloaded.
 
 ## Scope and release
 
 This is a new local Git repository on branch sprint-0. No GitHub remote or public deployment has been created. casko.dev and bytespace.casko.dev are unchanged. amplify.yml prepares static build settings only; AWS hosting, Node version, challenge rules and submission requirements must be verified before release. Public deployment requires Keith's confirmation.
 
-Next: finish portfolio evidence/content, implement ByteWire inspection/prevention, then the separate deterministic recovery engine. See docs/BACKLOG.md.
-
+Next: finish portfolio evidence/content and implement the separate deterministic infection/recovery engine. See docs/BACKLOG.md.
