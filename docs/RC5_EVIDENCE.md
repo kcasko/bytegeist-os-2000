@@ -17,3 +17,9 @@ Fresh lint, strict type checks, 33 unit/component tests and production build pas
 
 The virtual reboot is about four seconds and skippable. It only restarts the fictional desktop, never the actual computer. Notes/settings last within the current tab session; page refresh clears them. No startup sound. Physical-device and screen-reader sessions remain pending. AWS hosting and submission evidence remain pending confirmation.
 Final production run: 119 passed, 1 skipped (unsupported Firefox touch emulation), 0 failed, across Chromium/Firefox/WebKit with three workers. All six desktop-authenticity browser scenarios passed on each engine, including pointer resize/drag and each timed boot stage.
+
+## Investigate process follow-up
+
+Popup Investigate process now inspects songhelper.exe, opens/restores/focuses Task Manager, and scrolls/focuses a visibly highlighted process-details region. A new per-request counter ensures repeated clicks work even after evidence has already been collected. Reset/exit clears this request state. No duplicate Task Manager windows are created.
+
+Regression test reproduced the missing details before the fix. After the fix, the same scenario passed on Chromium, Firefox and WebKit, covering already-open, repeat-click, minimized and closed Task Manager. Fresh lint, strict types, 33 unit/component tests and production build passed. The earlier 119-pass full-suite result applies to RC5 before this follow-up; this targeted fix ran the three new browser cases.

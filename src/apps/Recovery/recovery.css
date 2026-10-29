@@ -27,3 +27,4 @@
 @media (max-width: 640px) { .simulation-bar { justify-content: center; } .simulation-bar strong { display: none; } .simulation-bar button { min-height: 30px; } .recovery { padding-bottom: 70px; } .bw-client { padding-bottom: 60px; } .utility-list>div { flex-wrap: wrap; } .utility-buttons button { width: 100%; min-height: 34px; } }
 
 @media (max-width: 1000px) { .simulation-bar strong { display: none; } }
+.process-details:focus { outline: 2px solid #174f7a; outline-offset: 2px; background: #e3eef6; }

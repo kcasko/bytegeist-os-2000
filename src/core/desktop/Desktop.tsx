@@ -37,10 +37,12 @@ export function Desktop() {
   const clockRef = useRef<HTMLButtonElement>(null)
   const desktopSnapshot = useRef<AppId[]>([])
   const [focusRequest, setFocusRequest] = useState(0)
+  const [processInvestigation, setProcessInvestigation] = useState(0)
   const startRef = useRef<HTMLButtonElement>(null)
   const dismiss = () => { setStartOpen(false); startRef.current?.focus() }
   const open = (id: AppId) => { dispatch({ type: 'open', id, bounds: bounds() }); setStartOpen(false); setDesktopMenu(null); setCalendarOpen(false); setFocusRequest(value => value + 1) }
   const clearSimulation = (exit: boolean) => {
+    setProcessInvestigation(0)
     incident.dispatch({ type: exit ? 'exit' : 'reset' })
     bytewire?.dispatch({ type: exit ? 'exit' : 'reset' })
     open('bytewire')
@@ -81,7 +83,12 @@ export function Desktop() {
     setDesktopMenu(null)
   }
   const turnOff = () => { cancelPending(); setNotes(savedNotes); incident.dispatch({ type: 'poweroff' }); dispatch({ type: 'reset' }); setPowerOpen(false); setPoweredOff(true) }
-  const preferences = { wallpaper, setWallpaper, notes, setNotes, savedNotes, saveNotes, restart }
+  const investigateProcess = () => {
+    incident.dispatch({ type: 'inspect', evidence: 'process' })
+    setProcessInvestigation(value => value + 1)
+    open('taskmanager')
+  }
+  const preferences = { wallpaper, setWallpaper, notes, setNotes, savedNotes, saveNotes, restart, processInvestigation }
   if (boot) return <BootScreen cold={boot === 'cold'} complete={completeBoot} />
   if (poweredOff) return <DesktopSession.Provider value={preferences}><div className="powered-off"><h1>It is now safe to close this tab.</h1><p>ByteGeist OS 2000 is turned off.</p><button onClick={restart}>Start computer</button></div></DesktopSession.Provider>
   const activeWindow = state.windows.find(win => win.id === state.active)
@@ -102,7 +109,7 @@ export function Desktop() {
     <div className="wallpaper" aria-hidden="true"><div className="wallpaper-symbol">{incident.state.processRunning ? '!' : 'bg'}</div><div className="wallpaper-name">{incident.state.processRunning ? 'songhelper.exe' : 'ByteGeist'}<span>OS 2000</span></div><p>{incident.state.processRunning ? 'YOUR MP3 CAME WITH ROOMMATES' : 'PROFESSIONAL EDITION'}</p><div className="wallpaper-rule" />{incident.state.processRunning && <span className="hijack-label">FICTIONAL DESKTOP HIJACK<br />PROCESS ACTIVE / STARTUP INSTALLED</span>}</div>
     <DesktopIcons key={arrange} open={open} bounds={bounds} />
     {incident.state.enabled && <aside className="simulation-bar" aria-label="Simulation controls"><strong>FICTIONAL SIMULATION / {incident.state.stage.toUpperCase()}</strong><button onClick={() => open('taskmanager')}>Recovery tools</button><button onClick={() => clearSimulation(false)}>Reset incident</button><button onClick={() => clearSimulation(true)}>Exit entire simulation</button></aside>}
-    {incident.state.processRunning && <><button className="rogue-shortcut" onClick={() => open('infection')}><strong aria-hidden="true">!</strong><span>ByteGuard 2000</span><small>UNINVITED GUEST</small></button><InfectionEffects key={incident.state.rebootCount} compact={window.innerWidth < 1280} obscured={warningsWouldCoverWindow} onInvestigate={() => open('taskmanager')} onActivity={() => open('infection')} /></>}
+    {incident.state.processRunning && <><button className="rogue-shortcut" onClick={() => open('infection')}><strong aria-hidden="true">!</strong><span>ByteGuard 2000</span><small>UNINVITED GUEST</small></button><InfectionEffects key={incident.state.rebootCount} compact={window.innerWidth < 1280} obscured={warningsWouldCoverWindow} onInvestigate={investigateProcess} onActivity={() => open('infection')} /></>}
     <div className="desktop-build" aria-hidden="true">ByteGeist OS 2000 Professional<br />Build 0003 · The internet was a mistake. Let's relive it.</div>
     {state.windows.map((win, index) => !win.minimized && <Window key={win.id} win={win} active={state.active === win.id} focusRequest={focusRequest} zIndex={index + 1} dispatch={dispatch} bounds={bounds}><AppContent id={win.id} open={open} /></Window>)}
     {startOpen && <StartMenu open={open} dismiss={dismiss} power={() => { setStartOpen(false); setPowerOpen(true) }} />}
