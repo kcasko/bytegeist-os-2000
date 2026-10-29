@@ -35,7 +35,7 @@ for (const width of [320, 390, 768, 1440]) {
     await scanner.getByRole('button', { name: 'Run verification scan', exact: true }).click()
     await scanner.getByRole('button', { name: 'Simulate reboot', exact: true }).click()
     const report = page.getByRole('dialog', { name: 'Incident Report', exact: true })
-    await expect(report.getByRole('heading', { name: 'I Survived LimeWire.' })).toBeVisible()
+    await expect(report.getByRole('heading', { name: 'I Survived LimeWire.' })).toBeVisible({ timeout: 8000 })
     await expect(report.getByText('RECOVERED / VERIFIED', { exact: true })).toBeVisible()
     await expect(report.getByText('Disguised executable: final extension .exe', { exact: true })).toBeVisible()
     if (width === 1440) expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([])

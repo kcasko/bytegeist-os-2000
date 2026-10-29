@@ -15,7 +15,7 @@ Scope: ByteGeist OS 2000 only, on local branch release/0.1.0. Existing published
 
 Fresh lint, strict type checks, 33 unit/component tests and production build passed. Independent read-only source review found no actionable issues. Screenshots capture production preview at 1440 x 900. First full browser run had 115 passes, one unsupported Firefox touch skip and one Firefox 320px timeout under six-worker load. Its complete four-size ByteWire file passed with one worker. A final complete three-worker run is recorded below when complete.
 
-The virtual reboot is about four seconds and skippable. It only restarts the fictional desktop, never the actual computer. Notes/settings last within the current tab session; page refresh clears them. No startup sound. Physical-device and screen-reader sessions remain pending. AWS hosting and submission evidence remain pending confirmation.
+The virtual reboot is about five seconds and skippable. It only restarts the fictional desktop, never the actual computer. Notes/settings last within the current tab session; page refresh clears them. No startup sound. Physical-device and screen-reader sessions remain pending. AWS hosting and submission evidence remain pending confirmation.
 Final production run: 119 passed, 1 skipped (unsupported Firefox touch emulation), 0 failed, across Chromium/Firefox/WebKit with three workers. All six desktop-authenticity browser scenarios passed on each engine, including pointer resize/drag and each timed boot stage.
 
 ## Investigate process follow-up

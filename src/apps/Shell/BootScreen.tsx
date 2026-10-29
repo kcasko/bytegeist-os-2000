@@ -5,7 +5,7 @@ export function BootScreen({ cold, complete }: { cold: boolean; complete: () => 
   const done = useRef(complete)
   useEffect(() => { done.current = complete }, [complete])
   useEffect(() => {
-    const timer = window.setTimeout(() => { if (step === 4) done.current(); else setStep(value => value + 1) }, [650, 250, 700, 1300, 650][step])
+    const timer = window.setTimeout(() => { if (step === 4) done.current(); else setStep(value => value + 1) }, [850, 350, 1100, 1900, 900][step])
     return () => window.clearTimeout(timer)
   }, [step])
   return <div className={`boot-screen boot-step-${step}`} role="region" aria-label="Virtual computer reboot">
