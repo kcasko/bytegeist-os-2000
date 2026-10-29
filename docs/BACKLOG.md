@@ -46,3 +46,7 @@ See RC6_QA_FOLLOWUP.md for finding-by-finding outcomes and deliberate limits.
 | ID | Priority | Acceptance | Status |
 | --- | --- | --- | --- |
 | BG-213 | P0 | Interactive personal fun fact: visible WebTV entry, connect/loading, reveal, palette controls, story remote, reduced motion, navigation preservation | Verified locally |
+
+## Final local candidate RC7
+
+All implemented local foundation, portfolio, desktop, ByteWire, recovery, QA-fix and interactive-fun-fact work is verified. Fresh final checks: 37 unit/component tests and 163 browser tests passed, two unsupported touch cases skipped. The remaining P0 release gates are public GitHub/Amplify publication, live and physical-device testing, AWS evidence, account eligibility and approved submission. See FINAL_LOCAL_RELEASE.md.

@@ -1,6 +1,6 @@
 # ByteGeist OS 2000
 
-An original Windows 98/2000-inspired technical portfolio with a fictional file-sharing client and a playable cybersecurity recovery scenario. Version 0.1.0 local release candidate, October 29, 2026.
+An original Windows 98/2000-inspired technical portfolio with WebTV Memories, an interactive personal fun fact, plus a fictional file-sharing client and a playable cybersecurity recovery scenario. Version 0.1.0 local release candidate, October 29, 2026.
 
 ## Run locally
 
@@ -16,7 +16,7 @@ Open the URL Vite prints. No AWS account, credentials or environment secrets are
 
 ## Explore
 
-Welcome, My Projects, About Keith and System Properties are always available from the desktop and Start. Project case studies describe the problem, approach and outcome, with evidence links. About includes contact; System Properties includes education, practical skills and public credential records.
+Welcome, My Projects, About Keith, Skills · System Properties and WebTV Memories are available from the desktop and Start. Project case studies describe the problem, approach and outcome, with evidence links. About includes contact; System Properties includes education, practical skills and public credential records.
 
 Windows support pointer dragging, stacking, minimize/restore, maximize/restore and close. On narrow screens, windows fill the workspace. Keyboard: Tab through controls, Enter/Space activate, Start arrows navigate and Escape dismisses Start. Focus a Move title button and use arrows to move by 16px, or Shift+arrows for 64px. Double-click a title to maximize.
 

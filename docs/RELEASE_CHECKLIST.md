@@ -1,6 +1,6 @@
 # Release checklist: 0.1.0 local candidate
 
-No public deployment or submission has been authorized. The application is a static React build with no backend, analytics, tracking, storage, real downloads, or executable execution.
+No public deployment or submission has been authorized. The application is a static React build with no backend, analytics, tracking, persistent browser storage, real downloads, or executable execution.
 
 ## Verified sources, October 29, 2026
 
@@ -11,6 +11,7 @@ No public deployment or submission has been authorized. The application is a sta
 ## Ready locally
 
 - [x] Original retro portfolio with directly accessible About, Skills and Projects.
+- [x] Discover my first internet entry and hover/focus hint; interactive WebTV connection, homepage palette, story remote, reduced-motion bypass and focus retention.
 - [x] Visible ByteWire launch hint; explicit consent before simulation and a second confirmation before infection.
 - [x] Prevention route and full containment/remediation/verification route.
 - [x] Task Manager, Startup Manager, ByteDefender, Event Viewer and automatic incident report.
