@@ -28,11 +28,10 @@ Keith authorized public GitHub publication and a separate Amplify deployment on 
 - [x] Source published from release/0.1.0 to GitHub main; GitHub Actions passed. Amplify uses a manual verified static upload, not automatic repository deployment. Remote CI/live test results are in LIVE_DEPLOYMENT.md.
 - [x] Live HTTPS HTML and assets verified; complete browser suite passed against the live URL, covering navigation, game routes and mobile layouts. Outbound link reachability is recorded in LINK_AUDIT.md.
 - [x] Save real Amplify job 2 deployment evidence/log and a live-site screenshot. Build ran locally; no Amplify build is claimed.
-- [ ] Capture an authenticated Amplify console screenshot for the submission.
+- [x] Capture an authenticated Amplify console screenshot and add it to the existing Builder Center draft.
 - [ ] Confirm Builder Center student verification and eligibility, add URLs and AWS evidence to submission draft.
 - [ ] Keith approves final submission, then submit and record confirmation.
 
 ## Manual verification limits
 
 No physical touch device or screen-reader session has been tested. Automation is not a complete accessibility certification. The game is one deterministic scenario. Optional sound, localStorage preferences/progress, terminal are deferred; they are not needed for the P0 experience.
-

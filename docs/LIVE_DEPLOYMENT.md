@@ -34,9 +34,8 @@ Uploaded portable artifact SHA-256: C381204CF66BDACBD8AA01D38BC3E0AD2C15C123A031
 
 ## Evidence and remaining submission work
 
-The task outputs contain a live desktop screenshot, AWS deployment evidence and logs. These are genuine records of the new app. The browser available for console screenshots is signed out, so an AWS console screenshot is still pending; do not mislabel an API record or live-site screenshot as a console setup view.
+The task outputs contain a live desktop screenshot, AWS deployment evidence and logs. These are genuine records of the new app. An authenticated Amplify console screenshot was captured on October 29 and added to the Builder Center draft. Its crop excludes the account header and retains deployment 2, the Deployed status and the public domain.
 
 Physical-phone testing, screen-reader review, student/profile eligibility confirmation, final entry review and submission remain pending. Publication approval does not imply challenge submission approval.
 
 GitHub Actions completed successfully for the deployed source commit: lint, types, build, 37 unit/component tests and 163 browser tests passed; two unsupported Firefox touch cases were skipped. The complete browser suite was also run against the live Amplify URL; its final Playwright result is passed with no failed tests. Physical devices and screen readers remain untested.
-
